@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 14/12/2023 às 01:44
+-- Tempo de geração: 13/06/2024 às 00:53
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -63,34 +63,6 @@ INSERT INTO `categorias` (`CategoriaId`, `NomeCategoria`) VALUES
 (3, 'Carne Suína'),
 (4, 'Frutos do Mar'),
 (6, 'Queijos');
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `clientes`
---
-
-CREATE TABLE `clientes` (
-  `ClienteId` int(11) NOT NULL,
-  `Nome` varchar(150) NOT NULL,
-  `Email` varchar(100) NOT NULL,
-  `Senha` char(64) NOT NULL,
-  `Endereco` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `clientes`
---
-
-INSERT INTO `clientes` (`ClienteId`, `Nome`, `Email`, `Senha`, `Endereco`) VALUES
-(28, 'Pedro Lauton', 'pedro@gmail.com', 'pedro123', 'Rua Graviola, 45'),
-(30, 'Carlos', 'carlos@gmail.com', 'carlos123', 'Rua Silva,78'),
-(31, 'Isabella', 'isa@gmail.com', 'isa123', 'Rua Dia, 67'),
-(32, 'Caio', 'caio@gmail.com', 'caio123', 'Rua Noite, 68'),
-(33, 'Domenico', 'dom@gmail.com', 'dom123', 'Rua Palmeiras, 51'),
-(34, 'Tiago', 'tiago@gmail.com', 'tiago123', 'Rua Coda, 09'),
-(35, 'Alex', 'alex@gmail.com', 'alex123', 'Rua Vegas, 89'),
-(36, 'Gabriel', 'gabriel@gmail.com', 'gabriel123', 'Rua Casa, 34');
 
 -- --------------------------------------------------------
 
@@ -161,7 +133,8 @@ CREATE TABLE `fornecedores` (
 INSERT INTO `fornecedores` (`FornecedorId`, `NomeFornecedor`, `Telefone`, `EmailFornecedor`) VALUES
 (1, 'LeiteAutêntico', '(11) 99999-9990', 'autenticoleite@gmail.com'),
 (2, 'FazuelleCortes', '(11) 99999-9999', 'fazuellecortes@gmail.com'),
-(3, 'Fogonoboi', '(11) 99999-9999', 'fogonoboi@gmail');
+(3, 'Fogonoboi', '(11) 99999-9999', 'fogonoboi@gmail'),
+(6, 'Lacta', '567546789', 'lacta@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -189,72 +162,6 @@ INSERT INTO `funcionarios` (`Id`, `Nome`, `Telefone`, `Email`, `Senha`, `Cargo`)
 (6, 'Pedro Lauton', '(11)  748395849', 'lauton@fun.com', 'lauton123', 'Chefe'),
 (7, 'Sérgio', '(11) 5784839274', 'sergio@fun.com', 'sergio123', 'CEO');
 
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `itens_pedido`
---
-
-CREATE TABLE `itens_pedido` (
-  `ItemPedidoId` int(11) NOT NULL,
-  `PedidoId` int(11) NOT NULL,
-  `ProdutoId` int(11) NOT NULL,
-  `Nome` varchar(20) NOT NULL,
-  `Imagem` varchar(20) NOT NULL,
-  `Quantidade` int(99) NOT NULL,
-  `Preco` float NOT NULL,
-  `Total` float NOT NULL,
-  `CodigoPedido` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `itens_pedido`
---
-
-INSERT INTO `itens_pedido` (`ItemPedidoId`, `PedidoId`, `ProdutoId`, `Nome`, `Imagem`, `Quantidade`, `Preco`, `Total`, `CodigoPedido`) VALUES
-(63, 49, 10, 'Picanha', 'corte5_bovinos.png', 10, 58.5, 585, 'PE21446'),
-(64, 50, 14, 'Pernil', 'corte4_suinos.png', 3, 27.89, 83.67, 'PE07888'),
-(73, 52, 7, 'Costela', 'corte2_bovinos.png', 8, 34.19, 273.52, 'PE75273'),
-(76, 54, 2, 'Coxa de frango', 'corte2_aves.png', 17, 7.29, 123.93, 'PE47862'),
-(77, 54, 5, 'Asas de frango', 'corte5_aves.png', 1, 19.94, 19.94, 'PE47862'),
-(78, 55, 7, 'Costela', 'corte2_bovinos.png', 4, 34.19, 136.76, 'PE80151'),
-(79, 56, 11, 'Linguiça', 'corte1_suinos.png', 6, 36.99, 221.94, 'PE63605'),
-(80, 57, 7, 'Costela', 'corte2_bovinos.png', 5, 34.19, 170.95, 'PE99079'),
-(81, 57, 8, 'Patinho', 'corte3_bovinos.png', 1, 40.99, 40.99, 'PE99079'),
-(82, 57, 24, 'Gorgonzola', 'corte4_queijos.png', 5, 114.68, 573.4, 'PE99079'),
-(83, 58, 8, 'Patinho', 'corte3_bovinos.png', 17, 40.99, 696.83, 'PE77336'),
-(84, 58, 3, 'Pé de frango', 'corte3_aves.png', 17, 7.99, 135.83, 'PE77336'),
-(85, 59, 12, 'Lombo', 'corte2_suinos.png', 6, 30, 180, 'PE89012'),
-(86, 60, 23, 'Cheddar', 'corte3_queijos.png', 3, 59.6, 178.8, 'PE59005');
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `pedidos`
---
-
-CREATE TABLE `pedidos` (
-  `PedidoId` int(11) NOT NULL,
-  `ClienteId` int(11) NOT NULL,
-  `CodigoPedido` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `pedidos`
---
-
-INSERT INTO `pedidos` (`PedidoId`, `ClienteId`, `CodigoPedido`) VALUES
-(49, 31, 'PE21446'),
-(50, 31, 'PE07888'),
-(52, 28, 'PE75273'),
-(54, 28, 'PE47862'),
-(55, 28, 'PE80151'),
-(56, 28, 'PE63605'),
-(57, 28, 'PE99079'),
-(58, 28, 'PE77336'),
-(59, 28, 'PE89012'),
-(60, 28, 'PE59005');
-
 --
 -- Índices para tabelas despejadas
 --
@@ -271,13 +178,6 @@ ALTER TABLE `administradores`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`CategoriaId`);
-
---
--- Índices de tabela `clientes`
---
-ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`ClienteId`),
-  ADD UNIQUE KEY `Email` (`Email`);
 
 --
 -- Índices de tabela `estoque`
@@ -301,23 +201,6 @@ ALTER TABLE `funcionarios`
   ADD UNIQUE KEY `Email` (`Email`);
 
 --
--- Índices de tabela `itens_pedido`
---
-ALTER TABLE `itens_pedido`
-  ADD PRIMARY KEY (`ItemPedidoId`),
-  ADD KEY `PedidoId` (`PedidoId`),
-  ADD KEY `ProdutoId` (`ProdutoId`),
-  ADD KEY `CodigoPedido` (`CodigoPedido`);
-
---
--- Índices de tabela `pedidos`
---
-ALTER TABLE `pedidos`
-  ADD PRIMARY KEY (`PedidoId`),
-  ADD UNIQUE KEY `CodigoPedido` (`CodigoPedido`),
-  ADD KEY `ClienteId` (`ClienteId`);
-
---
 -- AUTO_INCREMENT para tabelas despejadas
 --
 
@@ -334,12 +217,6 @@ ALTER TABLE `categorias`
   MODIFY `CategoriaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de tabela `clientes`
---
-ALTER TABLE `clientes`
-  MODIFY `ClienteId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-
---
 -- AUTO_INCREMENT de tabela `estoque`
 --
 ALTER TABLE `estoque`
@@ -349,25 +226,13 @@ ALTER TABLE `estoque`
 -- AUTO_INCREMENT de tabela `fornecedores`
 --
 ALTER TABLE `fornecedores`
-  MODIFY `FornecedorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `FornecedorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de tabela `itens_pedido`
---
-ALTER TABLE `itens_pedido`
-  MODIFY `ItemPedidoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
-
---
--- AUTO_INCREMENT de tabela `pedidos`
---
-ALTER TABLE `pedidos`
-  MODIFY `PedidoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restrições para tabelas despejadas
@@ -379,20 +244,6 @@ ALTER TABLE `pedidos`
 ALTER TABLE `estoque`
   ADD CONSTRAINT `estoque_ibfk_1` FOREIGN KEY (`CategoriaId`) REFERENCES `categorias` (`CategoriaId`),
   ADD CONSTRAINT `estoque_ibfk_2` FOREIGN KEY (`FornecedorId`) REFERENCES `fornecedores` (`FornecedorId`);
-
---
--- Restrições para tabelas `itens_pedido`
---
-ALTER TABLE `itens_pedido`
-  ADD CONSTRAINT `itens_pedido_ibfk_1` FOREIGN KEY (`PedidoId`) REFERENCES `pedidos` (`PedidoId`),
-  ADD CONSTRAINT `itens_pedido_ibfk_2` FOREIGN KEY (`ProdutoId`) REFERENCES `estoque` (`ProdutoId`),
-  ADD CONSTRAINT `itens_pedido_ibfk_3` FOREIGN KEY (`CodigoPedido`) REFERENCES `pedidos` (`CodigoPedido`);
-
---
--- Restrições para tabelas `pedidos`
---
-ALTER TABLE `pedidos`
-  ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`ClienteId`) REFERENCES `clientes` (`ClienteId`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,5 +1,5 @@
 <?php
-    class Caminho{
+    class ConectarBanco{
         public static $usuario = "root";
         public static $senha = "";
         public static $connect = null;
@@ -21,4 +21,3 @@
             return self::Conectar();
         }
     }
-?>
