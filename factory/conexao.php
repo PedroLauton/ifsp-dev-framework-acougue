@@ -1,5 +1,5 @@
 <?php
-    class ConectarBanco{
+    class ConexaoBanco{
         public static $usuario = "root";
         public static $senha = "";
         public static $connect = null;

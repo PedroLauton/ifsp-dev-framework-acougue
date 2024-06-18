@@ -1,7 +1,9 @@
 <?php
-    session_start();
     include_once "../control/dadosLogin.php";
+    include_once "../control/gerenciadorSessao.php";
     include_once "../factory/conexao.php";
+
+    GerenciadorSessao::iniciarSessao();
 
     $dados = new DadosLogin;
 
@@ -11,18 +13,11 @@
 
     $email = $dados->getEmail();
     $senha = $dados->getSenha();
-    $tabela = NULL;
-    
-    if($dados->getCargo() == "adm"){
-        $tabela = "administradores";
-    }else{
-        $tabela = "funcionarios";
-    }
-
-    $_SESSION['contribuidor'] = $tabela;
+    $tabela = ($dados->getCargo() == "adm") ? "administradores" : "funcionarios";
+    GerenciadorSessao::setarSessao('contribuidor', $tabela);
 
     if($email != NULL || $senha != NULL || $tabela != NULL){
-        $conn = new ConectarBanco;
+        $conn = new ConexaoBanco;
         $query = "SELECT * FROM $tabela WHERE Email=:email AND Senha=:senha";
         $login = $conn->getConn()->prepare($query);
         $login->bindParam(':email',$email,PDO::PARAM_STR);
@@ -31,7 +26,7 @@
         if($login->rowCount()){
             $usuario = $login->fetch(PDO::FETCH_ASSOC);
             $_SESSION['Id'] = $usuario['Id'];
-            if($tabela == "administradores"){
+            if(GerenciadorSessao::obterSessao('contribuidor') == "administradores"){
                 header("Location: ../view/menuAdm.php");
             }else{
                 header("Location: ../view/menuFuncionario.php");

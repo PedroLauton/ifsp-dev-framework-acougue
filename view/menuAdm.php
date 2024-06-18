@@ -6,6 +6,7 @@
     <title>Administrador</title>
 </head>
 <body>
-    soy adm
+    <a href="gerenciarFuncionario.php"><h2>Gerenciar funcionários</h2></a>
+    <a href="gerenciarProduto.php"><h2>Gerenciar produtos</h2></a>
 </body>
 </html>
