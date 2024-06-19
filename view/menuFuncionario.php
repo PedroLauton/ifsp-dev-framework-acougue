@@ -1,3 +1,22 @@
+<?php
+include_once "../control/gerenciadorSessao.php";
+
+GerenciadorSessao::iniciarSessao(); // Inicia a sessão usando a classe GerenciadorSessao
+
+// Verifica se o usuário está autenticado
+if (!isset($_SESSION['usuario_autenticado']) || $_SESSION['usuario_autenticado'] !== true) {
+    header("Location: login.php");
+    exit();
+}
+
+// Verifica se o usuário é um administrador
+if ($_SESSION['contribuidor'] !== "funcionarios") {
+    header("Location: login.php");
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,5 +26,7 @@
 </head>
 <body>
     soy clt 
+    <a href="../control/logout.php">Sair</a><br>
+
 </body>
 </html>
