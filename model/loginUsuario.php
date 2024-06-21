@@ -1,40 +1,49 @@
 <?php
-    include_once "../control/dadosLogin.php";
-    include_once "../control/gerenciadorSessao.php";
-    include_once "../factory/conexao.php";
+session_start(); // Inicia a sessão no início do script
 
-    GerenciadorSessao::iniciarSessao();
+include_once "../control/dadosLogin.php";
+include_once "../control/gerenciadorSessao.php";
+include_once "../factory/conexao.php";
 
-    $dados = new DadosLogin;
+GerenciadorSessao::iniciarSessao(); // Inicia a sessão usando a classe GerenciadorSessao
 
-    $dados->setEmail($_POST['cxEmail']);
-    $dados->setSenha($_POST['cxSenha']);
-    $dados->setCargo($_POST['cxHierarquia']);
+$dados = new DadosLogin;
 
-    $email = $dados->getEmail();
-    $senha = $dados->getSenha();
-    $tabela = ($dados->getCargo() == "adm") ? "administradores" : "funcionarios";
-    GerenciadorSessao::setarSessao('contribuidor', $tabela);
+$dados->setEmail($_POST['cxEmail']);
+$dados->setSenha($_POST['cxSenha']);
+$dados->setCargo($_POST['cxHierarquia']);
 
-    if($email != NULL || $senha != NULL || $tabela != NULL){
-        $conn = new ConexaoBanco;
-        $query = "SELECT * FROM $tabela WHERE Email=:email AND Senha=:senha";
-        $login = $conn->getConn()->prepare($query);
-        $login->bindParam(':email',$email,PDO::PARAM_STR);
-        $login->bindParam(':senha',$senha,PDO::PARAM_STR);
-        $login->execute();
-        if($login->rowCount()){
-            $usuario = $login->fetch(PDO::FETCH_ASSOC);
-            $_SESSION['Id'] = $usuario['Id'];
-            if(GerenciadorSessao::obterSessao('contribuidor') == "administradores"){
-                header("Location: ../view/menuAdm.php");
-            }else{
-                header("Location: ../view/menuFuncionario.php");
-            }
-            echo "Dados buscados com sucesso!";
-        }else{
-            echo "Dados não encontrados";
+$email = $dados->getEmail();
+$senha = $dados->getSenha();
+$tabela = ($dados->getCargo() == "adm") ? "administradores" : "funcionarios";
+GerenciadorSessao::setarSessao('contribuidor', $tabela);
+
+if ($email != NULL && $senha != NULL && $tabela != NULL) {
+    $conn = new ConexaoBanco;
+    $query = "SELECT * FROM $tabela WHERE Email=:email AND Senha=:senha";
+    $login = $conn->getConn()->prepare($query);
+    $login->bindParam(':email', $email, PDO::PARAM_STR);
+    $login->bindParam(':senha', $senha, PDO::PARAM_STR);
+    $login->execute();
+
+    if ($login->rowCount() > 0) {
+        $usuario = $login->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['usuario_autenticado'] = true;
+        $_SESSION['Id'] = $usuario['Id'];
+
+        if ($tabela == "administradores") {
+            $_SESSION['contribuidor'] = "administradores";
+            header("Location: ../view/menuAdm.php");
+            exit();
+        } else {
+            $_SESSION['contribuidor'] = "funcionarios";
+            header("Location: ../view/menuFuncionario.php");
+            exit();
         }
-    }else{
-        echo "Credenciais inválidas";
+    } else {
+        echo "Dados não encontrados";
     }
+} else {
+    echo "Credenciais inválidas";
+}
+?>
