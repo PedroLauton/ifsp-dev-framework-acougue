@@ -9,8 +9,7 @@
     <a href="cadastrarProduto.php">Cadastrar produto:</a>
     Editar produto:
     <a href=""></a>
-    Buscar produto:
-    <a href=""></a>
+    <a href="listarProdutoTodos.php">Buscar produto:</a>
     Deletar produto:
     <a href=""></a>
 </body>

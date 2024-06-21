@@ -1,28 +1,28 @@
 <?php
-    include_once "../control/dadosLogin.php";
-    include_once "../control/gerenciadorSessao.php";
+    include_once "../control/produtoControl.php";
     include_once "../factory/conexao.php";
-    include_once "produto.php";
+    include_once "produtoModel.php";
 
     $conn = new ConexaoBanco;
-    $gerenciarProduto = new Produto;
+    $dadosProduto = new Produto;
+    $salvarProduto = new ProdutoModel($conn);
 
-    $gerenciarProduto->setNomeProduto($_POST['cxNome']);
-    $gerenciarProduto->setPrecoUnitario($_POST['cxPreco']);
-    $gerenciarProduto->setPorcaoUnidade($_POST['cxPorcao']);
-    $gerenciarProduto->setFornecedor($_POST['cxProduto']);
-    $gerenciarProduto->setCategoria($_POST['cxCategoria']);
-    $gerenciarProduto->setFoto($_POST['cxFoto']);
+    $dadosProduto->setNomeProduto($_POST['cxNome']);
+    $dadosProduto->setPrecoUnitario($_POST['cxPreco']);
+    $dadosProduto->setPorcaoUnidade($_POST['cxPorcao']);
+    $dadosProduto->setFornecedor($_POST['cxProduto']);
+    $dadosProduto->setCategoria($_POST['cxCategoria']);
+    $dadosProduto->setFoto($_POST['cxFoto']);
 
-    $nome = $gerenciarProduto->getNomeProduto();
-    $preco = $gerenciarProduto->getPrecoUnitario();
-    $porcao = $gerenciarProduto->getPorcaoUnidade();
-    $fornecedor = $gerenciarProduto->getFornecedor();
-    $categoria = $gerenciarProduto->getCategoria();
-    $foto = $gerenciarProduto->getFoto();
+    $nome = $dadosProduto->getNomeProduto();
+    $preco = $dadosProduto->getPrecoUnitario();
+    $porcao = $dadosProduto->getPorcaoUnidade();
+    $fornecedor = $dadosProduto->getFornecedor();
+    $categoria = $dadosProduto->getCategoria();
+    $foto = $dadosProduto->getFoto();
 
     try {
-        $gerenciarProduto->inserirProduto($nome, $preco, $porcao, $categoria, $fornecedor, $foto, $conn);
+        $salvarProduto->inserirProduto($nome, $preco, $porcao, $categoria, $fornecedor, $foto);
         echo "Operação realizada com sucesso.";
     } catch (Exception $e) {
         echo "Erro ao realizar a operação: " . $e->getMessage();
