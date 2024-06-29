@@ -1,5 +1,5 @@
 <?php 
-    include_once "../factory/conexao.php";
+    include_once "../../factory/conexao.php";
 
     class ProdutoModel{
         private $conn;
@@ -40,11 +40,34 @@
             return $selecaoPorNome->fetchAll(PDO::FETCH_ASSOC);
        }
 
-       public function deletarProduto($nome){
-            $query = "DELETE FROM estoque WHERE NomeProduto=:nome";
-            $selecaoPorNome = $this->conn->prepare($query);
-            $selecaoPorNome->bindParam(':nome',$nome,PDO::PARAM_STR);
-            $selecaoPorNome->execute();
-            return $selecaoPorNome->fetchAll(PDO::FETCH_ASSOC);
+       public function listarPorId($id){
+            $query = "SELECT * FROM estoque WHERE ProdutoId=:id";
+            $selecaoPorId = $this->conn->prepare($query);
+            $selecaoPorId->bindParam(':id',$id,PDO::PARAM_STR);
+            $selecaoPorId->execute();
+            return $selecaoPorId->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+       public function deletarProduto($id){
+            $query = "DELETE FROM estoque WHERE ProdutoId=:id";
+            $deletar = $this->conn->prepare($query);
+            $deletar->bindParam(':id',$id,PDO::PARAM_STR);
+            $deletar->execute();
        }
+
+       public function updateProduto($id, $nome, $preco, $porcao, $categoria, $fornecedor, $foto){
+        $query = "UPDATE estoque SET NomeProduto=:nome, PrecoUnitario=:preco, PorcaoUnidadeKg=:porcao, CategoriaId=:categoria, FornecedorId=:fornecedor, fotoProduto=:foto WHERE ProdutoId=:id";
+        $update = $this->conn->prepare($query);
+        $update = $this->conn->prepare($query);
+        $update = $this->conn->prepare($query);
+        $update->bindParam(':id', $id, PDO::PARAM_INT);
+        $update->bindParam(':nome', $nome, PDO::PARAM_STR);
+        $update->bindParam(':preco', $preco, PDO::PARAM_STR);
+        $update->bindParam(':porcao', $porcao, PDO::PARAM_STR);
+        $update->bindParam(':categoria', $categoria, PDO::PARAM_INT);
+        $update->bindParam(':fornecedor', $fornecedor, PDO::PARAM_INT);
+        $update->bindParam(':foto', $foto, PDO::PARAM_STR);
+        $update->execute();
+    }
+    
     }

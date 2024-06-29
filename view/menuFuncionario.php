@@ -25,8 +25,7 @@ if ($_SESSION['contribuidor'] !== "funcionarios") {
     <title>Funcionário</title>
 </head>
 <body>
-    soy clt 
+    <a href="viewProdutos/gerenciarProduto.php">Gerenciar produtos</a><br>
     <a href="../control/logout.php">Sair</a><br>
-
 </body>
 </html>

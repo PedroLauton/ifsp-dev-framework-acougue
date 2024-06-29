@@ -1,6 +1,6 @@
 <?php
-    include_once "../model/produtoModel.php";
-    include_once "../factory/conexao.php";
+    include_once "../../model/modelProduto/produtoModel.php";
+    include_once "../../factory/conexao.php";
 
     class Produto{
         private $nomeProduto;
@@ -67,7 +67,19 @@
             return $this->produtoModel->listarTodos();
         }
 
+        public function listarPorId($id){
+            return $this->produtoModel->listarPorId($id);
+        }
+
         public function listarPorNome($nome){
             return $this->produtoModel->listarPorNome($nome);
+        }
+
+        public function deletarProduto($id){
+            return $this->produtoModel->deletarProduto($id);
+        }
+
+        public function updateProduto($id, $nome, $preco, $porcao, $categoria, $fornecedor, $foto){
+            return $this->produtoModel->updateProduto($id, $nome, $preco, $porcao, $categoria, $fornecedor, $foto);
         }
     }

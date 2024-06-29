@@ -12,8 +12,8 @@
         Senha
         <input type="password" name="cxSenha" required placeholder="Digite a sua senha"><br><br><br>
         Hierarquia:<br>
-        <input type="radio" name="cxHierarquia" value="adm" id="Adm">Administrador
-        <input type="radio" name="cxHierarquia" value="func" id="Func">Funcionário<br><br><br>
+        <input type="radio" name="cxHierarquia" value="adm" id="Adm" required>Administrador
+        <input type="radio" name="cxHierarquia" value="func" id="Func" required>Funcionário<br><br><br>
         <button type="submit">Entrar</button>
     </form>
 </body>

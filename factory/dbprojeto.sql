@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13/06/2024 às 00:53
+-- Tempo de geração: 30/06/2024 às 01:30
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `administradores` (
-  `AdmId` int(11) NOT NULL,
+  `Id` int(11) NOT NULL,
   `Nome` varchar(50) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL,
   `Senha` varchar(255) DEFAULT NULL
@@ -38,7 +38,7 @@ CREATE TABLE `administradores` (
 -- Despejando dados para a tabela `administradores`
 --
 
-INSERT INTO `administradores` (`AdmId`, `Nome`, `Email`, `Senha`) VALUES
+INSERT INTO `administradores` (`Id`, `Nome`, `Email`, `Senha`) VALUES
 (1, 'Joel', 'joel@adm.com', 'joel123'),
 (2, 'Antonio', 'antonio@adm.com', 'antonio123');
 
@@ -75,10 +75,8 @@ CREATE TABLE `estoque` (
   `NomeProduto` varchar(120) NOT NULL,
   `PorcaoUnidadeKg` float NOT NULL,
   `PrecoUnitario` float NOT NULL,
-  `Lote` varchar(50) NOT NULL,
   `CategoriaId` int(11) NOT NULL,
   `FornecedorId` int(11) NOT NULL,
-  `Quantidade` int(11) NOT NULL,
   `fotoProduto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -86,32 +84,11 @@ CREATE TABLE `estoque` (
 -- Despejando dados para a tabela `estoque`
 --
 
-INSERT INTO `estoque` (`ProdutoId`, `NomeProduto`, `PorcaoUnidadeKg`, `PrecoUnitario`, `Lote`, `CategoriaId`, `FornecedorId`, `Quantidade`, `fotoProduto`) VALUES
-(1, 'Peito de frango', 1, 52, 'e3r23r', 1, 2, 1000, 'corte1_aves.png'),
-(2, 'Coxa de frango', 1, 7.29, 'e3rrer3', 1, 2, 1000, 'corte2_aves.png'),
-(3, 'Pé de frango', 1, 7.99, 'e3rrer3', 1, 2, 1000, 'corte3_aves.png'),
-(4, 'Coração de frango', 1, 37.9, 'e3r23r', 1, 2, 1000, 'corte4_aves.png'),
-(5, 'Asas de frango', 1, 19.94, 'e3rrer3', 1, 2, 1000, 'corte5_aves.png'),
-(6, 'Contra filé', 1, 32.99, 'e3r23r', 2, 3, 1000, 'corte1_bovinos.png'),
-(7, 'Costela', 1, 34.19, 'e3rrer3', 2, 3, 1000, 'corte2_bovinos.png'),
-(8, 'Patinho', 1, 40.99, 'e3rrer3', 2, 3, 1000, 'corte3_bovinos.png'),
-(9, 'Maminha', 1, 33.99, 'e3rrer3', 2, 3, 1000, 'corte4_bovinos.png'),
-(10, 'Picanha', 1, 58.5, 'e3rrer3', 2, 3, 1000, 'corte5_bovinos.png'),
-(11, 'Linguiça', 1, 36.99, 'e3r23r', 3, 2, 1000, 'corte1_suinos.png'),
-(12, 'Lombo', 1, 30, 'e3r23r', 3, 3, 1000, 'corte2_suinos.png'),
-(13, 'Costelinha', 1, 16.79, 'e3r23r', 3, 2, 1000, 'corte3_suinos.png'),
-(14, 'Pernil', 1, 27.89, 'e3r23r', 3, 2, 1000, 'corte4_suinos.png'),
-(15, 'Bisteca', 1, 13.78, 'e3rrer3', 3, 2, 1000, 'corte5_suinos.png'),
-(16, 'Caranguejo', 1, 86.9, 'e3r23r', 4, 3, 1000, 'corte1_frutos.png'),
-(17, 'Camarão', 1, 84.9, 'e3rrer3', 4, 3, 1000, 'corte2_frutos.png'),
-(18, 'Lula', 1, 89, 'e3rrer3', 4, 3, 1000, 'corte3_frutos.png'),
-(19, 'Tilápia', 1, 59.98, 'e3r23r', 4, 3, 1000, 'corte4_frutos.png'),
-(20, 'Ostras', 1, 60, 'e3rrer3', 4, 3, 1000, 'corte5_frutos.png'),
-(21, 'Parmesão', 1, 81.67, 'e3r23r', 6, 1, 1000, 'corte1_queijos.png'),
-(22, 'Mussarela', 1, 57.6, 'e3rrer3', 6, 1, 1000, 'corte2_queijos.png'),
-(23, 'Cheddar', 1, 59.6, 'e3rrer3', 6, 1, 1000, 'corte3_queijos.png'),
-(24, 'Gorgonzola', 1, 114.68, 'e3rrer3', 6, 1, 1000, 'corte4_queijos.png'),
-(25, 'Provolone', 1, 98.56, 'e3r23r', 6, 1, 1000, 'corte5_queijos.png');
+INSERT INTO `estoque` (`ProdutoId`, `NomeProduto`, `PorcaoUnidadeKg`, `PrecoUnitario`, `CategoriaId`, `FornecedorId`, `fotoProduto`) VALUES
+(42, 'Batata', 1, 1, 1, 1, '_0ee1a2ed-38d5-4264-8e59-105c155eae90.jpeg'),
+(43, 'Feijão', 1, 1, 1, 1, '_0ee1a2ed-38d5-4264-8e59-105c155eae90.jpeg'),
+(44, 'Maconha', 1, 1, 1, 1, '_0ee1a2ed-38d5-4264-8e59-105c155eae90.jpeg'),
+(45, 'Picanha', 1, 1, 1, 1, '_0ee1a2ed-38d5-4264-8e59-105c155eae90.jpeg');
 
 -- --------------------------------------------------------
 
@@ -133,8 +110,7 @@ CREATE TABLE `fornecedores` (
 INSERT INTO `fornecedores` (`FornecedorId`, `NomeFornecedor`, `Telefone`, `EmailFornecedor`) VALUES
 (1, 'LeiteAutêntico', '(11) 99999-9990', 'autenticoleite@gmail.com'),
 (2, 'FazuelleCortes', '(11) 99999-9999', 'fazuellecortes@gmail.com'),
-(3, 'Fogonoboi', '(11) 99999-9999', 'fogonoboi@gmail'),
-(6, 'Lacta', '567546789', 'lacta@gmail.com');
+(3, 'Fogonoboi', '(11) 99999-9999', 'fogonoboi@gmail');
 
 -- --------------------------------------------------------
 
@@ -170,7 +146,7 @@ INSERT INTO `funcionarios` (`Id`, `Nome`, `Telefone`, `Email`, `Senha`, `Cargo`)
 -- Índices de tabela `administradores`
 --
 ALTER TABLE `administradores`
-  ADD PRIMARY KEY (`AdmId`),
+  ADD PRIMARY KEY (`Id`),
   ADD UNIQUE KEY `Email` (`Email`);
 
 --
@@ -208,7 +184,7 @@ ALTER TABLE `funcionarios`
 -- AUTO_INCREMENT de tabela `administradores`
 --
 ALTER TABLE `administradores`
-  MODIFY `AdmId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `categorias`
@@ -220,7 +196,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de tabela `estoque`
 --
 ALTER TABLE `estoque`
-  MODIFY `ProdutoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `ProdutoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT de tabela `fornecedores`

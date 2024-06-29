@@ -1,6 +1,4 @@
 <?php
-session_start(); // Inicia a sessão no início do script
-
 include_once "../control/dadosLogin.php";
 include_once "../control/gerenciadorSessao.php";
 include_once "../factory/conexao.php";
