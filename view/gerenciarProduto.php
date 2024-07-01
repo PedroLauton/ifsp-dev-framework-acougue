@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listar produtos</title>
     <?php
-        include_once "../../control/produtoControl.php";
+        include_once "../control/produtoControl.php";
         $dadosProdutos = new Produto;
         $produtos = $dadosProdutos->listarTodos();
     ?>

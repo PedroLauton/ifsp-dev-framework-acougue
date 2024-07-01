@@ -26,8 +26,8 @@ if ($_SESSION['contribuidor'] !== "administradores") {
 <body>
     <h1>Bem-vindo, Administrador!</h1>
     <ul>
-        <a href="viewFuncionario/gerenciarFuncionario.php">Gerenciar funcionários</a> <br>
-        <a href="viewProdutos/gerenciarProduto.php">Gerenciar produtos</a><br>
+        <a href="gerenciarFuncionario.php">Gerenciar funcionários</a> <br>
+        <a href="gerenciarProduto.php">Gerenciar produtos</a><br>
         <a href="../control/logout.php">Sair</a><br>
     </ul>
 </body>

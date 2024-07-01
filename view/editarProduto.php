@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atualizar Produto</title>
     <?php
-        include_once "../../control/produtoControl.php";
+        include_once "../control/produtoControl.php";
         $dadosProdutos = new Produto;
         $id = $_GET['id'];
         $produtos = $dadosProdutos->listarPorId($id);
@@ -14,7 +14,7 @@
 <body>
     <?php if (!empty($produtos)): ?>
         <?php foreach($produtos as $produto): ?>
-            <form action="../../model/modelProduto/updateProduto.php" method="POST">
+            <form action="../model/updateProduto.php" method="POST">
                 <input type="hidden" name="ProdutoId" value="<?php echo ($produto['ProdutoId']); ?>">
                 Nome:
                 <input type="text" name="cxNome" value="<?php echo ($produto['NomeProduto']); ?>" required><br><br>
@@ -44,7 +44,7 @@
         <?php endforeach; ?>
     <?php else: ?>
         <p>Produto não encontrado.</p>
-        <a href="listarProdutoTodos.php">Voltar</a>
+        <a href="gerenciarProduto.php">Voltar</a>
     <?php endif; ?>
 </body>
 </html>

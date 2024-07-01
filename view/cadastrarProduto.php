@@ -6,7 +6,7 @@
     <title>Cadastrar produto</title>
 </head>
 <body>
-    <form action="../../model/modelProduto/inserirProduto.php" method="POST">
+    <form action="../model/inserirProduto.php" method="POST">
         Nome:
         <input type="text" name="cxNome" required><br><br>
         Preço unitário:

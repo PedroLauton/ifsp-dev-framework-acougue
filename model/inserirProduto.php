@@ -1,6 +1,6 @@
 <?php
-    include_once "../../control/produtoControl.php";
-    include_once "../../factory/conexao.php";
+    include_once "../control/produtoControl.php";
+    include_once "../factory/conexao.php";
     include_once "produtoModel.php";
 
     $conn = new ConexaoBanco;
@@ -23,7 +23,7 @@
 
     try {
         $salvarProduto->inserirProduto($nome, $preco, $porcao, $categoria, $fornecedor, $foto);
-        header("Location: ../../view/viewProdutos/gerenciarProduto.php"); 
+        header("Location: ../view/gerenciarProduto.php"); 
     } catch (Exception $e) {
         echo "Erro ao realizar a operação: " . $e->getMessage();
     }

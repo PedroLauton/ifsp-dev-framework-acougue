@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+MX:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playwrite+MX:wght@100..400&display=swap');
+
+:root{
+    --cor-vinho: #400000;
+    --cor-branca: #FFFFFF;
+    --cor-laranja: #C27A00;
+    --cor-preto: #000000;
+    --cor-cartao: #BBBABA;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 18px;
+    color: var(--cor-branca);
+    font-family: 'PT Sans', sans-serif;
+}
+.cabecalho{
+    background-color: var(--cor-vinho);
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+.cabecalho__navegacao{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem 3rem;
+}
+.cabecalho__navegacao__logo{
+    width: 5rem;
+}
+.cabecalho__navegacao__Marca{
+    font-size: 2rem;
+    font-family: 'Playwrite MX', sans-serif;
+    display: none;
+}
+.cabecalho__navegacao__Marca__Estilo{
+    font-size: 2rem;
+    font-family: 'Playwrite MX', sans-serif;
+    color: var(--cor-laranja);
+}
+.cabecalho__navegacao__login{
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.6rem 1.3rem;
+    border: solid 2px var(--cor-branca);
+}
+.container{
+    padding-top: 6rem;
+    background-image: url(../img/plano\ de\ fundo.avif);
+}
+.container__conteudo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.container__conteudo__titulo{
+    color: var(--cor-preto);
+    font-size: 2rem;
+    padding: 1rem 0;
+}
+.container__conteudo__texto{
+    color: var(--cor-preto);
+    width: 60%;
+    padding-bottom: 1rem;
+}
+.container__conteudo__promocional__imagem{
+    width: 100%;
+}
+.container__conteudo__produtos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.container__conteudo__produtos__tema{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container__conteudo__produtos__tema__titulo{
+    color: var(--cor-preto);
+    font-size: 2rem;
+    padding: 1rem;
+}
+.container__conteudo__produtos__tema__traco{
+    width: 7rem;
+    height: 1rem;
+}
+.container__conteudo__produtos__cartoes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color:rgba(190, 190, 190, 0.4);
+    width: 13rem;
+    height: 17rem;
+    padding: 2rem;
+    border-radius: 30px;
+    margin: 0.5rem 2rem 0.5rem 2rem;
+    border: solid 1px rgba(121, 121, 121, 0.4);
+}
+.container__conteudo__produtos__cartoes__imagem{
+    width: 5rem;
+    padding: 1rem 0;
+}
+.container__conteudo__produtos__cartoes__titulo{
+    color: var(--cor-preto);
+    font-size: 1.5rem;
+    text-align: center;
+}
+.container__conteudo__produtos__cartoes__indicativo{
+    color: var(--cor-preto);
+    padding: 0 0 1rem 0;
+}
+.container__conteudo__produtos__cartoes__preco{
+    color: var(--cor-preto);
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+.container__conteudo__produtos__semproduto{
+    color: var(--cor-preto);
+    padding: 1rem 0;
+}
+.container__fornecedores{
+    background-color: #BBBABA;
+    display: flex;
+    flex-wrap: wrap ;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 1rem 0;
+
+}
+.container__fornecedores__auxiliar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25rem;
+}
+.container__fornecedores__centralizar{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.container__fornecedores__centralizar__imagem{
+    width: 40%;
+}
+.container__fornecedores__titulo{
+    padding: 1.5rem 0;
+    color: var(--cor-preto);
+    font-size: 2rem;
+    text-decoration: underline;
+}
+.container__fornecedores__titulo__dois{
+    padding-bottom: 1rem;
+    color: var(--cor-preto);
+    font-size: 2rem;
+    text-decoration: underline;
+}
+.container__fornecedores__texto{
+    color: var(--cor-preto);
+    text-align: center;
+    padding: 1rem 2rem 2rem 2rem;
+}
+.footer{
+    background-color: var(--cor-vinho);
+}
+.footer__centralizar{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    justify-content: center;
+}
+.footer__centralizar__conteudo{
+    margin: 1rem 1rem;
+    text-align: center;
+}
+@media screen and (min-width:800px){
+    .cabecalho__navegacao__logo{
+        width: 7rem;
+    }
+    .cabecalho__navegacao__Marca{
+        display: block;
+    }
+    .container__fornecedores__centralizar__imagem{
+        width: 25%;
+    } 
+}

@@ -1,6 +1,6 @@
 <?php
-    include_once "../../model/modelProduto/produtoModel.php";
-    include_once "../../factory/conexao.php";
+    include_once "../model/produtoModel.php";
+    include_once "../factory/conexao.php";
 
     class Produto{
         private $nomeProduto;
@@ -9,6 +9,7 @@
         private $categoria;
         private $fornecedor;
         private $foto;
+        private $id;
         private $produtoModel;
 
         public function __construct() {
@@ -69,6 +70,10 @@
 
         public function listarPorId($id){
             return $this->produtoModel->listarPorId($id);
+        }
+
+        public function listarPorCategoria($categoria){
+            return $this->produtoModel->listarPorCategoria($categoria);
         }
 
         public function listarPorNome($nome){

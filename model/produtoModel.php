@@ -1,5 +1,5 @@
 <?php 
-    include_once "../../factory/conexao.php";
+    include_once "../factory/conexao.php";
 
     class ProdutoModel{
         private $conn;
@@ -39,6 +39,14 @@
             $selecaoPorNome->execute();
             return $selecaoPorNome->fetchAll(PDO::FETCH_ASSOC);
        }
+
+       public function listarPorCategoria($categoria){
+            $query = "SELECT * FROM estoque WHERE CategoriaId=:categoria";
+            $selecaoPorCategoria = $this->conn->prepare($query);
+            $selecaoPorCategoria->bindParam(':categoria',$categoria,PDO::PARAM_STR);
+            $selecaoPorCategoria->execute();
+            return $selecaoPorCategoria->fetchAll(PDO::FETCH_ASSOC);
+        }
 
        public function listarPorId($id){
             $query = "SELECT * FROM estoque WHERE ProdutoId=:id";
