@@ -1,19 +1,9 @@
 <?php
 include_once "../control/gerenciadorSessao.php";
+include_once "../control/verificarSessao.php";
 
 GerenciadorSessao::iniciarSessao(); // Inicia a sessão usando a classe GerenciadorSessao
-
-// Verifica se o usuário está autenticado
-if (!isset($_SESSION['usuario_autenticado']) || $_SESSION['usuario_autenticado'] !== true) {
-    header("Location: login.php");
-    exit();
-}
-
-// Verifica se o usuário é um administrador
-if ($_SESSION['contribuidor'] !== "administradores") {
-    header("Location: login.php");
-    exit();
-}
+VerificarSessao::verificarAcesso(VerificarSessao::ADMINISTRADORES); // Verifica se o usuário é um administrador
 ?>
 
 <!DOCTYPE html>

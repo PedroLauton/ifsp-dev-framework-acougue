@@ -1,3 +1,10 @@
+<?php
+    include_once "../control/gerenciadorSessao.php";
+    include_once "../control/verificarSessao.php";
+    GerenciadorSessao::iniciarSessao(); // Inicia a sessão usando a classe GerenciadorSessao
+    // VerificarSessao::redirecionarUsuarioAutenticado(); // Redireciona usuário autenticado para a página apropriada
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
