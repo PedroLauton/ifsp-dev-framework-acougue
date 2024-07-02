@@ -3,46 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atualizar Produto</title>
+    <link rel="icon" href="../img/logo.png">
+    <link rel="stylesheet" href="../css/editarFuncionario.css">
+    <title>Editar funcionário</title>
     <?php
         include_once "../control/funcionarioControl.php";
-        $dadosfuncionarios = new Funcionario;
-        $id = $_GET['id'];
-        $funcionarios = $dadosfuncionarios->listarPorId($id);
+        $dadosFuncionario = new Funcionario;
+        $id = isset($_GET['id']) ? $_GET['id'] : null;
+        $funcionarios = $dadosFuncionario->listarPorId($id);    
     ?>
 </head>
 <body>
-    <?php if (!empty($funcionarios)): ?>
-        <?php foreach($funcionarios as $funcionario): ?>
-            <form action="../model/editarFuncionario.php" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="FuncionarioId" value="<?php echo ($funcionario['Id']); ?>">
-                Nome:
-                <input type="text" name="cxNome" value="<?php echo ($funcionario['Nome']); ?>" required><br><br>
-                Telefone:
-                <input type="text" name="cxTelefone" value="<?php echo ($funcionario['Telefone']); ?>" required><br><br>
-                Email:
-                <input type="email" name="cxEmail" value="<?php echo ($funcionario['Email']); ?>" required><br><br>
-                Senha:
-                <input type="text" name="cxSenha" value="<?php echo ($funcionario['Senha']); ?>" required><br><br>
-                Cargo:
-                <select id="cargo" name="cxCargo" required>
-                    <option value="1" <?php echo ($funcionario['Cargo'] == 1) ? 'selected' : ''; ?>>Aves</option>
-                    <option value="2" <?php echo ($funcionario['Cargo'] == 2) ? 'selected' : ''; ?>>Carne bovina</option>
-                    <option value="3" <?php echo ($funcionario['Cargo'] == 3) ? 'selected' : ''; ?>>Carne suína</option>
-                    <option value="4" <?php echo ($funcionario['Cargo'] == 4) ? 'selected' : ''; ?>>Frutos do mar</option>
-                    <option value="5" <?php echo ($funcionario['Cargo'] == 5) ? 'selected' : ''; ?>>Queijos</option>
-                </select><br><br>
-                Foto atual:
-                <img src="<?php echo htmlspecialchars($funcionario['Foto']); ?>" alt="Foto do funcionário" style="max-width: 200px;"><br><br>
-                Nova foto:
-                <input type="file" name="cxFoto"><br><br>
-                <input type="hidden" name="fotoAtual" value="<?php echo ($funcionario['Foto']); ?>">
-                <button type="submit">Enviar</button>
+    <header class="cabecalho">
+        <nav class="cabecalho__navegacao">
+            <a href="menuAdm.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
+            <span class="cabecalho__navegacao__Marca">Açougu-<span class="cabecalho__navegacao__Marca__Estilo">E</span></span>
+        </nav>
+    </header>
+    <main class="container">
+        <section class="container__conteudo">
+            <h1 class="container__conteudo__titulo">Edição de funcionário</h1>
+            <div class="container__conteudo__centralizar">
+                <form class="container__conteudo__centralizar__pesquisa" action="listarFuncionarioNome.php" method="POST">
+                    <a class="container__conteudo__centralizar__cadastro" href="cadastrarProduto.php">Cadastrar</a>
+                    <input class="container__conteudo__centralizar__pesquisa__input" type="text" name="cxNomeFunc" placeholder="Buscar">
+                    <button class="container__conteudo__centralizar__pesquisa__button"><img class="container__conteudo__centralizar__pesquisa__imagem" src="../img/pesquisar.png" alt="Imagem Lupa"></button>
+                </form>
+            </div>
+            <form action="../model/editarFuncionario.php" method="POST">
+                <div class="container__conteudo__auxiliar">
+                    <?php if (!empty($funcionarios)): ?>
+                        <?php foreach($funcionarios as $funcionario): ?>
+                            <section class="container__conteudo__funcionarios">
+                                <input type="hidden" name="FuncionarioId" value="<?php echo ($funcionario['Id']); ?>">
+                                <div class="container__conteudo__funcionarios__divisoes">
+                                    <label class="container__conteudo__funcionarios__divisoes__titulo">Nome:</label>
+                                    <input class="container__conteudo__funcionarios__divisoes__input" type="text" name="cxNome" value="<?php echo ($funcionario['Nome']); ?>" required>
+                                </div>
+                                <div class="container__conteudo__funcionarios__divisoes">
+                                    <label class="container__conteudo__funcionarios__divisoes__titulo">Telefone:</label>
+                                    <input class="container__conteudo__funcionarios__divisoes__input" type="text" name="cxTelefone" value="<?php echo ($funcionario['Telefone']); ?>" required>
+                                </div>
+                                <div class="container__conteudo__funcionarios__divisoes">
+                                    <label class="container__conteudo__funcionarios__divisoes__titulo">Email:</label>
+                                    <input class="container__conteudo__funcionarios__divisoes__input" type="text" name="cxEmail" value="<?php echo ($funcionario['Email']); ?>" required>
+                                </div>
+                                <div class="container__conteudo__funcionarios__divisoes">
+                                    <label class="container__conteudo__funcionarios__divisoes__titulo">Senha:</label>
+                                    <input class="container__conteudo__funcionarios__divisoes__input" type="text" name="cxSenha" value="<?php echo ($funcionario['Senha']); ?>" required>
+                                </div>
+                                <div class="container__conteudo__funcionarios__divisoes">
+                                    <label class="container__conteudo__funcionarios__divisoes__titulo">Cargo:</label>
+                                    <select id="cargo" name="cxCargo" required>
+                                        <option value="1" <?php echo ($funcionario['Cargo'] == 1) ? 'selected' : ''; ?>>Auxiliar</option>
+                                        <option value="2" <?php echo ($funcionario['Cargo'] == 2) ? 'selected' : ''; ?>>Gerente</option>
+                                        <option value="3" <?php echo ($funcionario['Cargo'] == 3) ? 'selected' : ''; ?>>Chefe</option>
+                                        <option value="4" <?php echo ($funcionario['Cargo'] == 4) ? 'selected' : ''; ?>>CEO</option>
+                                    </select>
+                                </div>
+                                <div class="container__conteudo__funcionarios__divisoes">
+                                    <label class="container__conteudo__funcionarios__divisoes__titulo">Foto:</label>
+                                    <input type="file" name="cxFoto" id="fotoFuncionario" accept="image/*" required />
+                                </div>
+                                <div class="container__conteudo__funcionarios__divisoes">
+                                    <div>
+                                    <button class="container__conteudo__funcionarios__divisoes__button">Salvar</button>
+                                    </div>
+                                </div>
+                            </section>
+                        <?php endforeach; ?> 
+                    <?php else:?>
+                        <p class="container__conteudo__auxiliar__semproduto">Nenhum funcionário encontrado para edição.</p>
+                    <?php endif;?>
+                    <button class="container__conteudo__auxiliar__voltar"><a class="container__conteudo__auxiliar__voltar_link" href="gerenciarFuncionario.php">Voltar</a></button>
+                </div> 
             </form>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>Produto não encontrado.</p>
-        <a href="gerenciarFuncionario.php">Voltar</a>
-    <?php endif; ?>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__centralizar">
+            <span class="footer__centralizar__conteudo">+55 11 99999-9999 </span>
+            <span class="footer__centralizar__conteudo">açougue@gmail.com</span>
+            <span class="footer__centralizar__conteudo">©2024 Açougu-e. Todos os direitos reservados.</span>
+        </div>
+    </footer>
 </body>
 </html>

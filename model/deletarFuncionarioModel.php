@@ -4,7 +4,7 @@
     $conn = new ConexaoBanco;
     $dadosFuncionario = new Funcionario;
     
-    $id = $_POST['IdFuncionario'];
+    $id = $_POST['FuncionarioId'];
     try {
         $dadosFuncionario = new Funcionario();
         $dadosFuncionario->deletarFuncionario($id);

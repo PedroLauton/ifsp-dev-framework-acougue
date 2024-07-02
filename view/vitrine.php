@@ -21,7 +21,7 @@
 <body>
     <header class="cabecalho">
         <nav class="cabecalho__navegacao">
-            <img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E">
+            <a href="vitrine.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
             <span class="cabecalho__navegacao__Marca">Açougu-<span class="cabecalho__navegacao__Marca__Estilo">E</span></span>
             <a class="cabecalho__navegacao__login" href="login.php">Login</a>
         </nav>

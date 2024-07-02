@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+MX:wght@100..400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playwrite+MX:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chau+Philomene+One:ital@0;1&display=swap');
 
 :root{
     --cor-vinho: #400000;
@@ -32,13 +34,13 @@
     width: 5rem;
 }
 .cabecalho__navegacao__Marca{
-    font-size: 2rem;
-    font-family: 'Playwrite MX', sans-serif;
+    font-size: 4rem;
+    font-family: 'Dancing Script', cursive;
     display: none;
 }
 .cabecalho__navegacao__Marca__Estilo{
-    font-size: 2rem;
-    font-family: 'Playwrite MX', sans-serif;
+    font-size: 3rem;
+    font-family: 'Dancing Script', cursive;
     color: var(--cor-laranja);
 }
 .cabecalho__navegacao__login{
@@ -62,16 +64,19 @@
 }
 .container__conteudo__titulo{
     color: var(--cor-preto);
-    font-size: 2rem;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 3rem;
     padding: 1rem 0;
 }
 .container__conteudo__texto{
+    font-family: "Libre Baskerville", serif;
     color: var(--cor-preto);
     width: 60%;
     padding-bottom: 1rem;
 }
 .container__conteudo__promocional__imagem{
     width: 100%;
+    margin-top: 2.5rem;
 }
 .container__conteudo__produtos{
     display: flex;
@@ -85,8 +90,9 @@
     align-items: center;
 }
 .container__conteudo__produtos__tema__titulo{
+    font-family: "Bebas Neue", sans-serif;
     color: var(--cor-preto);
-    font-size: 2rem;
+    font-size: 4rem;
     padding: 1rem;
 }
 .container__conteudo__produtos__tema__traco{
@@ -111,15 +117,18 @@
     padding: 1rem 0;
 }
 .container__conteudo__produtos__cartoes__titulo{
+    font-family: "Libre Baskerville", serif;
     color: var(--cor-preto);
     font-size: 1.5rem;
     text-align: center;
 }
 .container__conteudo__produtos__cartoes__indicativo{
+    font-family: "Libre Baskerville", serif;
     color: var(--cor-preto);
     padding: 0 0 1rem 0;
 }
 .container__conteudo__produtos__cartoes__preco{
+    font-family: "Chau Philomene One", sans-serif;
     color: var(--cor-preto);
     font-weight: 700;
     font-size: 1.3rem;
@@ -129,7 +138,7 @@
     padding: 1rem 0;
 }
 .container__fornecedores{
-    background-color: #BBBABA;
+    background-color: var(--cor-cartao);
     display: flex;
     flex-wrap: wrap ;
     align-items: center;
@@ -154,18 +163,21 @@
     width: 40%;
 }
 .container__fornecedores__titulo{
+    font-family: "Bebas Neue", sans-serif;
     padding: 1.5rem 0;
     color: var(--cor-preto);
-    font-size: 2rem;
+    font-size: 3rem;
     text-decoration: underline;
 }
 .container__fornecedores__titulo__dois{
+    font-family: "Bebas Neue", sans-serif;
     padding-bottom: 1rem;
     color: var(--cor-preto);
-    font-size: 2rem;
+    font-size: 3rem;
     text-decoration: underline;
 }
 .container__fornecedores__texto{
+    font-family: "Libre Baskerville", serif;
     color: var(--cor-preto);
     text-align: center;
     padding: 1rem 2rem 2rem 2rem;
@@ -180,6 +192,7 @@
     justify-content: center;
 }
 .footer__centralizar__conteudo{
+    font-family: "Libre Baskerville", serif;
     margin: 1rem 1rem;
     text-align: center;
 }

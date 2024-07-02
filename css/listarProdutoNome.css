@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chau+Philomene+One:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap'); /* Adicionado para a fonte PT Sans */
+
+:root {
+    --cor-vinho: #400000;
+    --cor-branca: #FFFFFF;
+    --cor-laranja: #C27A00;
+    --cor-preto: #000000;
+    --cor-cartao: #BBBABA;
+    --fonte1: 'Libre Baskerville', serif;
+    --fonte2: 'Dancing Script', cursive;
+    --fonte3: 'Bebas Neue', sans-serif;
+    --fonte4: 'Chau Philomene One', sans-serif;
+    --fonte5: 'PT Sans', sans-serif;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 18px;
+    color: var(--cor-branca);
+    font-family: var(--fonte5);
+}
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+header {
+    flex-shrink: 0;
+}
+main {
+    flex: 1;
+}
+.cabecalho {
+    background-color: var(--cor-vinho);
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+.cabecalho__navegacao {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem 3rem;
+}
+.cabecalho__navegacao__logo {
+    width: 5rem;
+}
+.cabecalho__navegacao__Marca {
+    font-size: 2rem;
+    font-family: var(--fonte2);
+}
+.cabecalho__navegacao__Marca__Estilo {
+    font-size: 2rem;
+    font-family: var(--fonte2);
+    color: var(--cor-laranja);
+}
+.cabecalho__navegacao__login {
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.6rem 1.3rem;
+    border: solid 2px var(--cor-branca);
+}
+.container {
+    padding-top: 12rem;
+    background-image: url(../img/plano\ de\ fundo.avif);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.container__conteudo{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.container__conteudo__titulo {
+    font-family: var(--fonte5);
+    font-size: 2rem;
+    color: var(--cor-preto);
+    padding-bottom: 2rem;
+}
+.container__conteudo__centralizar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90vw;
+}
+.container__conteudo__centralizar__cadastro{
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--cor-vinho);
+    text-decoration: none;
+    padding: 0.6rem 1.3rem;
+    margin: 2rem 1rem 2rem 0;
+    border: solid 2px var(--cor-vinho);
+    background-color: transparent;
+    display: inline-block;
+    cursor: pointer;
+}
+.container__conteudo__centralizar__pesquisa{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.container__conteudo__centralizar__pesquisa__input{
+    font-size: 1.3rem;
+    color: var(--cor-vinho);
+    text-decoration: none;
+    padding: 0.6rem 1.3rem;
+    margin: 2rem 0rem;
+    border: solid 2px var(--cor-vinho);
+    background-color: transparent;
+    width: 90vw;
+    min-width: 20vw;
+}
+.container__conteudo__centralizar__pesquisa__button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.container__conteudo__centralizar__pesquisa__imagem{
+    width: 2rem;
+    margin: 1rem 1rem;
+}
+.container__conteudo__auxiliar{
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.container__conteudo__funcionarios{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0.6rem 1.3rem;
+    margin: 2rem 2rem;
+    border: solid 2px var(--cor-vinho);
+    background-color: transparent;
+    width: 100%;
+}
+.container__conteudo__funcionarios__divisoes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--cor-preto);
+    text-align: center;
+}
+.container__conteudo__funcionarios__divisoes__titulo{
+    color: var(--cor-preto);
+    margin-bottom: 0.5rem;
+}
+.container__conteudo__funcionarios__divisoes__input{
+    background-color: transparent;
+    color: var(--cor-preto);
+    border: none;
+    text-align: center;
+    border-bottom: solid 1px var(--cor-preto);
+    width: 4rem;
+    margin-bottom: 1rem;
+}
+.container__conteudo__funcionarios__divisoes__imagem{
+    width: 2rem;
+    margin: 1rem 1rem;
+}
+.container__conteudo__auxiliar__semproduto{
+    color: var(--cor-preto);
+    padding: 1rem 0;
+}
+.container__conteudo__auxiliar__voltar{
+    padding: 0.6rem 1.3rem;
+    margin: 2rem 1rem 2rem 0;
+    border: solid 2px var(--cor-vinho);
+    background-color: transparent;
+    cursor: pointer;
+}
+.container__conteudo__auxiliar__voltar_link{
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--cor-vinho);
+    text-decoration: none;
+}
+.footer {
+    background-color: var(--cor-vinho);
+}
+.footer__centralizar {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    justify-content: center;
+}
+.footer__centralizar__conteudo {
+    font-family: var(--fonte1);
+    margin: 1rem 1rem;
+    text-align: center;
+}
+
+@media screen and (min-width: 800px) {
+    .cabecalho__navegacao__logo {
+        width: 7rem;
+    }
+    .cabecalho__navegacao__Marca {
+        display: block;
+    }
+    .cabecalho__navegacao__Marca {
+        font-size: 4rem;
+    }
+    .container__conteudo__funcionarios{
+        flex-direction: row;
+        flex-wrap: wrap;
+     }
+     .container__conteudo__funcionarios__divisoes{
+         margin: 0 1rem;
+         width: 10%;
+     }
+}

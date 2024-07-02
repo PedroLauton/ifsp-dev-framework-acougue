@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chau+Philomene+One:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap'); /* Adicionado para a fonte PT Sans */
+
+:root {
+    --cor-vinho: #400000;
+    --cor-branca: #FFFFFF;
+    --cor-laranja: #C27A00;
+    --cor-preto: #000000;
+    --cor-cartao: #BBBABA;
+    --fonte1: 'Libre Baskerville', serif;
+    --fonte2: 'Dancing Script', cursive;
+    --fonte3: 'Bebas Neue', sans-serif;
+    --fonte4: 'Chau Philomene One', sans-serif;
+    --fonte5: 'PT Sans', sans-serif;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 18px;
+    color: var(--cor-branca);
+    font-family: var(--fonte5);
+}
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+header {
+    flex-shrink: 0;
+}
+main {
+    flex: 1;
+}
+.cabecalho {
+    background-color: var(--cor-vinho);
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+.cabecalho__navegacao {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem 3rem;
+}
+.cabecalho__navegacao__logo {
+    width: 5rem;
+}
+.cabecalho__navegacao__Marca {
+    font-size: 2rem;
+    font-family: var(--fonte2);
+}
+.cabecalho__navegacao__Marca__Estilo {
+    font-size: 2rem;
+    font-family: var(--fonte2);
+    color: var(--cor-laranja);
+}
+.cabecalho__navegacao__login {
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.6rem 1.3rem;
+    border: solid 2px var(--cor-branca);
+}
+.container {
+    padding-top: 12rem;
+    background-image: url(../img/plano\ de\ fundo.avif);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.container__titulo {
+    font-family: var(--fonte5);
+    font-size: 2rem;
+    color: var(--cor-preto);
+    padding: 0 0 1rem 0;
+}
+.container__login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--cor-vinho);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 3rem;
+}
+.container__login__form {
+    display: flex;
+    flex-direction: column;
+}
+.container__login__form__input{
+    padding: 0.3rem;
+    border-radius: 5px;
+    color: var(--cor-preto);
+}
+.container__login__form__span {
+    font-family: var(--fonte5);
+    margin: 1rem;
+}
+.container__login__form__span__hierarquia {
+    font-family: var(--fonte5);
+    margin: 2rem 0 1rem 0;
+}
+.container__login__form__button {
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.6rem 1.3rem;
+    margin: 2rem 0 0 0;
+    border: solid 2px var(--cor-branca);
+    background-color: transparent;
+    display: inline-block;
+    cursor: pointer;
+}
+.container__login__form__span__adm{
+    padding: 0 1.3rem 0 0.5rem;
+}
+.container__login__form__span__func{
+    padding: 0 0 0 0.5rem;
+}
+.footer {
+    background-color: var(--cor-vinho);
+}
+.footer__centralizar {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    justify-content: center;
+}
+.footer__centralizar__conteudo {
+    font-family: var(--fonte1);
+    margin: 1rem 1rem;
+    text-align: center;
+}
+
+@media screen and (min-width: 800px) {
+    .cabecalho__navegacao__logo {
+        width: 7rem;
+    }
+    .cabecalho__navegacao__Marca {
+        display: block;
+    }
+    .cabecalho__navegacao__Marca {
+        font-size: 4rem;
+    }
+}

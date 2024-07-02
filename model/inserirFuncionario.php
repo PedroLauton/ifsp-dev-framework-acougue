@@ -25,5 +25,5 @@
         $salvarFuncionario->inserirFuncionario($nome, $telefone, $email, $senha, $cargo, $foto);
         header("Location: ../view/gerenciarFuncionario.php"); 
     } catch (Exception $e) {
-        echo "Erro ao realizar a operação: " . $e->getMessage();
+        header("Location: ../view/gerenciarFuncionario.php"); 
     }
