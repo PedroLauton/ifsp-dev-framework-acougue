@@ -1,5 +1,8 @@
 <?php
     include_once "../control/funcionarioControl.php";
+    include_once "../control/gerenciadorSessao.php";
+
+    GerenciadorSessao::verificaLoginAdm();
 
     $dadosFuncionario = new Funcionario;
     $funcionarios = $dadosFuncionario->listarTodos();
@@ -16,7 +19,7 @@
 <body>
     <header class="cabecalho">
         <nav class="cabecalho__navegacao">
-            <a href="menuAdm.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
+            <a href="vitrine.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
             <span class="cabecalho__navegacao__Marca">Açougu-<span class="cabecalho__navegacao__Marca__Estilo">E</span></span>
         </nav>
     </header>
@@ -52,7 +55,12 @@
                             </div>
                             <div class="container__conteudo__funcionarios__divisoes">
                                 <label class="container__conteudo__funcionarios__divisoes__titulo">Cargo:</label>
-                                <input class="container__conteudo__funcionarios__divisoes__input" type="text" name="cxCargo" value="<?php echo ($funcionario['Cargo']); ?>" readonly>
+                                <select id="cargo" name="cxCargo" disabled>
+                                    <option value="1" <?php echo ($funcionario['Cargo'] == 1) ? 'selected' : ''; ?>>Auxiliar</option>
+                                    <option value="2" <?php echo ($funcionario['Cargo'] == 2) ? 'selected' : ''; ?>>Gerente</option>
+                                    <option value="3" <?php echo ($funcionario['Cargo'] == 3) ? 'selected' : ''; ?>>Chefe</option>
+                                    <option value="4" <?php echo ($funcionario['Cargo'] == 4) ? 'selected' : ''; ?>>CEO</option>
+                                </select>
                             </div>
                             <div class="container__conteudo__funcionarios__divisoes">
                                 <label class="container__conteudo__funcionarios__divisoes__titulo">Foto:</label>

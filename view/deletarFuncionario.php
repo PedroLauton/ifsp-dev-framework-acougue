@@ -1,3 +1,13 @@
+<?php
+    include_once "../control/funcionarioControl.php";
+    include_once "../control/gerenciadorSessao.php";
+
+    GerenciadorSessao::verificaLoginAdm();
+    
+    $dadosFuncionario = new Funcionario;
+    $id = isset($_GET['id']) ? $_GET['id'] : null;
+    $funcionarios = $dadosFuncionario->listarPorId($id);    
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,24 +15,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../img/logo.png">
     <link rel="stylesheet" href="../css/deletarFuncionario.css">
-    <title>Deletar funcionário</title>
-    <?php
-        include_once "../control/funcionarioControl.php";
-        $dadosFuncionario = new Funcionario;
-        $id = isset($_GET['id']) ? $_GET['id'] : null;
-        $funcionarios = $dadosFuncionario->listarPorId($id);    
-    ?>
+    <title>Excluir funcionário</title>
 </head>
 <body>
     <header class="cabecalho">
         <nav class="cabecalho__navegacao">
-            <a href="menuAdm.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
+            <a href="vitrine.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
             <span class="cabecalho__navegacao__Marca">Açougu-<span class="cabecalho__navegacao__Marca__Estilo">E</span></span>
         </nav>
     </header>
     <main class="container">
         <section class="container__conteudo">
-            <h1 class="container__conteudo__titulo">Deletar Funcionário</h1>
+            <h1 class="container__conteudo__titulo">Exclusão Funcionário</h1>
             <div class="container__conteudo__centralizar">
                 <form class="container__conteudo__centralizar__pesquisa" action="listarFuncionarioNome.php" method="POST">
                     <a class="container__conteudo__centralizar__cadastro" href="cadastrarProduto.php">Cadastrar</a>

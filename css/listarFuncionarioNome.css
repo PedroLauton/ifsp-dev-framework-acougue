@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Chau+Philomene+One:ital@0;1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap'); /* Adicionado para a fonte PT Sans */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap'); 
 
 :root {
     --cor-vinho: #400000;
@@ -183,7 +183,7 @@ main {
     width: 2rem;
     margin: 1rem 1rem;
 }
-.container__conteudo__auxiliar__semproduto{
+.container__conteudo__auxiliar__semfuncionario{
     color: var(--cor-preto);
     padding: 1rem 0;
 }
@@ -199,6 +199,9 @@ main {
     font-weight: 700;
     color: var(--cor-vinho);
     text-decoration: none;
+}
+option, select{
+    color: var(--cor-preto);
 }
 .footer {
     background-color: var(--cor-vinho);

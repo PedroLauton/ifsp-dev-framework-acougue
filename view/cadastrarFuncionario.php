@@ -1,3 +1,8 @@
+<?php
+    include_once "../control/gerenciadorSessao.php";
+    
+    GerenciadorSessao::verificaLoginAdm();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -10,7 +15,7 @@
 <body>
     <header class="cabecalho">
         <nav class="cabecalho__navegacao">
-            <a href="menuAdm.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
+            <a href="vitrine.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
             <span class="cabecalho__navegacao__Marca">Açougu-<span class="cabecalho__navegacao__Marca__Estilo">E</span></span>
         </nav>
     </header>

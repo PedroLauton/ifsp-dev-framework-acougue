@@ -51,15 +51,30 @@
             return $selecaoPorId->fetchAll(PDO::FETCH_ASSOC);
         }
 
-       public function deletarProduto($id){
-            $query = "DELETE FROM estoque WHERE ProdutoId=:id";
-            $deletar = $this->conn->prepare($query);
-            $deletar->bindParam(':id',$id,PDO::PARAM_STR);
-            $deletar->execute();
-       }
+        public function deletarProduto($id) {
+            $query = "SELECT fotoProduto FROM estoque WHERE ProdutoId=:id";
+            $selecaoPorId = $this->conn->prepare($query);
+            $selecaoPorId->bindParam(':id', $id, PDO::PARAM_STR);
+            $selecaoPorId->execute();
+            $produto = $selecaoPorId->fetch(PDO::FETCH_ASSOC);
+    
+            if ($produto) {
+                $nomeImagem = $produto['fotoProduto'];
+    
+                $query = "DELETE FROM estoque WHERE ProdutoId=:id";
+                $deletar = $this->conn->prepare($query);
+                $deletar->bindParam(':id', $id, PDO::PARAM_STR);
+                $deletar->execute();
+    
+                $caminhoImagem = "../img/" . $nomeImagem;
+                if (file_exists($caminhoImagem)) {
+                    unlink($caminhoImagem);
+                }
+            }
+        }
 
-       public function updateProduto($id, $nome, $preco, $porcao, $categoria, $fornecedor, $foto){
-            $query = "UPDATE estoque SET NomeProduto=:nome, PrecoUnitario=:preco, PorcaoUnidadeKg=:porcao, CategoriaId=:categoria, FornecedorId=:fornecedor, fotoProduto=:foto WHERE ProdutoId=:id";
+        public function updateProdutoSemFoto($id, $nome, $preco, $porcao, $categoria, $fornecedor){
+            $query = "UPDATE estoque SET NomeProduto=:nome, PrecoUnitario=:preco, PorcaoUnidadeKg=:porcao, CategoriaId=:categoria, FornecedorId=:fornecedor WHERE ProdutoId=:id";
             $update = $this->conn->prepare($query);
             $update = $this->conn->prepare($query);
             $update = $this->conn->prepare($query);
@@ -69,8 +84,35 @@
             $update->bindParam(':porcao', $porcao, PDO::PARAM_STR);
             $update->bindParam(':categoria', $categoria, PDO::PARAM_INT);
             $update->bindParam(':fornecedor', $fornecedor, PDO::PARAM_INT);
+            $update->execute();
+        }
+
+        public function updateProduto($id, $nome, $preco, $porcao, $categoria, $fornecedor, $foto) {
+            $queryFotoAtual = "SELECT fotoProduto FROM estoque WHERE ProdutoId=:id";
+            $stmtFotoAtual = $this->conn->prepare($queryFotoAtual);
+            $stmtFotoAtual->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmtFotoAtual->execute();
+            $produto = $stmtFotoAtual->fetch(PDO::FETCH_ASSOC);
+            
+            $nomeFotoAntiga = $produto['fotoProduto'];
+    
+            $query = "UPDATE estoque SET NomeProduto=:nome, PrecoUnitario=:preco, PorcaoUnidadeKg=:porcao, CategoriaId=:categoria, FornecedorId=:fornecedor, fotoProduto=:foto WHERE ProdutoId=:id";
+            $update = $this->conn->prepare($query);
+            $update->bindParam(':id', $id, PDO::PARAM_INT);
+            $update->bindParam(':nome', $nome, PDO::PARAM_STR);
+            $update->bindParam(':preco', $preco, PDO::PARAM_STR);
+            $update->bindParam(':porcao', $porcao, PDO::PARAM_STR);
+            $update->bindParam(':categoria', $categoria, PDO::PARAM_INT);
+            $update->bindParam(':fornecedor', $fornecedor, PDO::PARAM_INT);
             $update->bindParam(':foto', $foto, PDO::PARAM_STR);
             $update->execute();
+    
+            if (!empty($foto)) {
+                $caminhoFotoAntiga = "../img/" . $nomeFotoAntiga;
+                if (file_exists($caminhoFotoAntiga)) {
+                    unlink($caminhoFotoAntiga);
+                }
+            }
         }
 
         public function validarImagem($foto) {
@@ -104,3 +146,4 @@
             }
         }
     }
+?>

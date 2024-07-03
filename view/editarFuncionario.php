@@ -1,5 +1,8 @@
 <?php
     include_once "../control/funcionarioControl.php";
+    include_once "../control/gerenciadorSessao.php";
+    
+    GerenciadorSessao::verificaLoginAdm();
 
     $dadosFuncionario = new Funcionario;
     $id = isset($_GET['id']) ? $_GET['id'] : null;
@@ -12,18 +15,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../img/logo.png">
     <link rel="stylesheet" href="../css/editarFuncionario.css">
-    <title>Editar funcionário</title>
+    <title>Editar funcionários</title>
+    <script src="../js/editarFuncionario.js" defer></script>
 </head>
 <body>
     <header class="cabecalho">
         <nav class="cabecalho__navegacao">
-            <a href="menuAdm.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
+            <a href="vitrine.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
             <span class="cabecalho__navegacao__Marca">Açougu-<span class="cabecalho__navegacao__Marca__Estilo">E</span></span>
         </nav>
     </header>
     <main class="container">
         <section class="container__conteudo">
-            <h1 class="container__conteudo__titulo">Edição de funcionário</h1>
+            <h1 class="container__conteudo__titulo">Edição de funcionários</h1>
             <div class="container__conteudo__centralizar">
                 <form class="container__conteudo__centralizar__pesquisa" action="listarFuncionarioNome.php" method="POST">
                     <a class="container__conteudo__centralizar__cadastro" href="cadastrarFuncionario.php">Cadastrar</a>
@@ -31,7 +35,7 @@
                     <button class="container__conteudo__centralizar__pesquisa__button"><img class="container__conteudo__centralizar__pesquisa__imagem" src="../img/pesquisar.png" alt="Imagem Lupa"></button>
                 </form>
             </div>
-            <form action="../model/editarFuncionario.php" method="POST" enctype="multipart/form-data">
+            <form id="formEditarFuncionario" action="../model/editarFuncionario.php" method="POST" enctype="multipart/form-data">
                 <div class="container__conteudo__auxiliar">
                     <?php if (!empty($funcionarios)): ?>
                         <?php foreach($funcionarios as $funcionario): ?>
@@ -64,7 +68,13 @@
                                 </div>
                                 <div class="container__conteudo__funcionarios__divisoes">
                                     <label class="container__conteudo__funcionarios__divisoes__titulo">Foto:</label>
-                                    <input type="file" name="cxFoto" id="fotoFuncionario" accept="image/*" required />
+                                    <div class="custom-file-input">
+                                        <label class="container__conteudo__funcionarios__divisoes__titulo__file" for="fotoFuncionario">
+                                            <img id="imagemFuncionario" class="container__conteudo__funcionarios__divisoes__titulo__file_imagem" src="../img/<?php echo ($funcionario['Foto']); ?>" alt="Upload">
+                                        </label>
+                                        <span id="nomeImagem" class="container__conteudo__funcionarios__divisoes__texto" for="fotoFuncionario"><?php echo ($funcionario['Foto'] == true) ? 'Nova imagem?' : ''; ?></span>
+                                        <input type="file" name="cxFoto" id="fotoFuncionario" accept="image/*" onchange="exibirImagemFuncionario(this)"  />
+                                    </div>
                                 </div>
                                 <div class="container__conteudo__funcionarios__divisoes">
                                     <div>

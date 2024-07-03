@@ -12,6 +12,18 @@
     $dadosProduto->setFornecedor($_POST['cxFornecedor']);
     $dadosProduto->setCategoria($_POST['cxCategoria']);
 
+    $id = $dadosProduto->getId();
+    $nome = $dadosProduto->getNomeProduto();
+    $preco = $dadosProduto->getPrecoUnitario();
+    $porcao = $dadosProduto->getPorcaoUnidade();
+    $categoria = $dadosProduto->getCategoria();
+    $fornecedor = $dadosProduto->getFornecedor();
+
+    if($foto == null){
+        $dadosProduto->updateProdutoSemFoto($id, $nome, $preco, $porcao, $categoria, $fornecedor);
+        header("Location: ../view/gerenciarProduto.php");
+    }
+
     $foto = $_FILES["cxFoto"];
     $nomeImagem = $dadosProduto->salvarImagem($foto);
 
@@ -22,12 +34,6 @@
         exit;
     }
 
-    $id = $dadosProduto->getId();
-    $nome = $dadosProduto->getNomeProduto();
-    $preco = $dadosProduto->getPrecoUnitario();
-    $porcao = $dadosProduto->getPorcaoUnidade();
-    $categoria = $dadosProduto->getCategoria();
-    $fornecedor = $dadosProduto->getFornecedor();
     $foto = $dadosProduto->getFoto();
 
     $dadosProduto->updateProduto($id, $nome, $preco, $porcao, $categoria, $fornecedor, $foto);

@@ -1,10 +1,11 @@
 <?php
     include_once "../control/gerenciadorSessao.php";
-    include_once "../control/verificarSessao.php";
-    GerenciadorSessao::iniciarSessao(); // Inicia a sessão usando a classe GerenciadorSessao
-    // VerificarSessao::redirecionarUsuarioAutenticado(); // Redireciona usuário autenticado para a página apropriada
-?>
+    include_once "../control/produtoControl.php";
 
+    GerenciadorSessao::iniciarSessao(); 
+
+    $dadosProdutos = new Produto;
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,10 +14,6 @@
     <link rel="icon" href="../img/logo.png">
     <link rel="stylesheet" href="../css/vitrine.css">
     <title>Açougu-E</title>
-    <?php
-        include_once "../control/produtoControl.php";
-        $dadosProdutos = new Produto;
-    ?>
 </head>
 <body>
     <header class="cabecalho">
@@ -33,7 +30,6 @@
             </div>
             <h1 class="container__conteudo__titulo">Nossos Cortes</h1>
             <p class="container__conteudo__texto">No Açougu-E, você encontra carnes suínas, bovinas, aves e frutos do mar de altíssima qualidade. Nossos cortes são selecionados com rigor para garantir frescor e sabor em cada pedaço. Seja para um churrasco, uma refeição rápida ou um prato sofisticado, temos a carne perfeita para todas as ocasiões. Visite-nos e descubra a diferença que a qualidade do Açougu-E pode fazer nas suas refeições. Siga-nos nas redes sociais e fique por dentro das nossas promoções exclusivas!</p>
-            
             <div class="container__conteudo__produtos__tema">
                 <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
                 <h2 class="container__conteudo__produtos__tema__titulo">Aves</h2>
@@ -54,7 +50,6 @@
                     <span class="container__conteudo__produtos__semproduto"> Sem produtos nessa seção.</span>
                 <?php endif; ?>
             </div>
-            
             <div class="container__conteudo__produtos__tema">
                 <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
                 <h2 class="container__conteudo__produtos__tema__titulo">Carne Bovina</h2>
@@ -75,7 +70,6 @@
                     <span class="container__conteudo__produtos__semproduto"> Sem produtos nessa seção.</span>
                 <?php endif; ?>
             </div>
-            
             <div class="container__conteudo__produtos__tema">
                 <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
                 <h2 class="container__conteudo__produtos__tema__titulo">Carne Suína</h2>
@@ -96,7 +90,6 @@
                     <span class="container__conteudo__produtos__semproduto"> Sem produtos nessa seção.</span>
                 <?php endif; ?>
             </div>
-            
             <div class="container__conteudo__produtos__tema">
                 <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
                 <h2 class="container__conteudo__produtos__tema__titulo">Frutos do Mar</h2>
@@ -118,7 +111,6 @@
                 <?php endif; ?>
             </div>
         </section>
-        
         <section class="container__fornecedores">
             <div class="container__fornecedores__centralizar">
                 <h2 class="container__fornecedores__titulo">Nossos fornecedores</h2>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03/07/2024 às 06:44
+-- Tempo de geração: 04/07/2024 às 01:55
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -84,8 +84,26 @@ CREATE TABLE `estoque` (
 --
 
 INSERT INTO `estoque` (`ProdutoId`, `NomeProduto`, `PorcaoUnidadeKg`, `PrecoUnitario`, `CategoriaId`, `FornecedorId`, `fotoProduto`) VALUES
-(71, 'Costela', 1, 45, 2, 1, '6684d3732e4c2.jpeg'),
-(72, 'Picanha', 1, 1, 1, 1, '6684d37aaf326.jpeg');
+(90, 'Peito de frango', 1, 34, 1, 1, '6685e27a4fa21.png'),
+(93, 'Pé de frango', 1, 34, 1, 1, '6685d945e01ef.png'),
+(94, 'Coração de frango', 1, 36, 1, 1, '6685d96900db1.png'),
+(95, 'Asas de frango', 1, 54, 1, 1, '6685d98742bbd.png'),
+(96, 'Contra filé', 1, 45, 2, 2, '6685d9f26035f.png'),
+(97, 'Costela', 1, 34, 2, 2, '6685da11a0051.png'),
+(98, 'Patinho', 1, 76, 2, 2, '6685da3763fad.png'),
+(99, 'Maminha', 1, 23, 2, 2, '6685da55b60ff.png'),
+(101, 'Linguiça', 1, 23, 3, 1, '6685da96f310c.png'),
+(102, 'Lombo', 1, 45, 3, 1, '6685dab906d44.png'),
+(103, 'Costelinha', 1, 45, 3, 1, '6685dad58baae.png'),
+(104, 'Pernil', 1, 67, 3, 1, '6685daed9d35c.png'),
+(105, 'Bisteca', 1, 55, 3, 1, '6685db0364e0e.png'),
+(106, 'Caranguejo', 1, 87, 4, 2, '6685db2186d60.png'),
+(107, 'Camarão', 1, 76, 4, 2, '6685db3889c1d.png'),
+(108, 'Lula', 1, 999, 4, 2, '6685db531518e.png'),
+(109, 'Tilápia', 1, 54, 4, 2, '6685db6de6fb1.png'),
+(110, 'Ostras', 1, 78, 4, 2, '6685db8543875.png'),
+(111, 'Picanha', 1, 999, 2, 2, '6685dc94bd254.png'),
+(112, 'Coxa de frango', 1, 34, 1, 1, '6685e1f2bbf91.png');
 
 -- --------------------------------------------------------
 
@@ -105,9 +123,8 @@ CREATE TABLE `fornecedores` (
 --
 
 INSERT INTO `fornecedores` (`FornecedorId`, `NomeFornecedor`, `Telefone`, `EmailFornecedor`) VALUES
-(1, 'LeiteAutêntico', '(11) 99999-9990', 'autenticoleite@gmail.com'),
-(2, 'FazuelleCortes', '(11) 99999-9999', 'fazuellecortes@gmail.com'),
-(3, 'Fogonoboi', '(11) 99999-9999', 'fogonoboi@gmail');
+(1, 'Fogonoboi', '(11) 99999-9990', 'fogonoboi@gmail.com'),
+(2, 'FazuelleCortes', '(11) 99999-9999', 'fazuellecortes@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -130,8 +147,10 @@ CREATE TABLE `funcionarios` (
 --
 
 INSERT INTO `funcionarios` (`Id`, `Nome`, `Telefone`, `Email`, `Senha`, `Cargo`, `Foto`) VALUES
-(18, 'Vinicius', '11945490833', 'vinicius@gmail.com', 'vini123', '1', '6684d32ccbfd4.jpeg'),
-(19, 'Paulo', '11968574633', 'paulo@gmai.com', 'paulo123', '2', '6684d348ad37b.jpeg');
+(21, 'Pedro', '114534565', 'pedro@func.com', 'pedro123', '4', '6685dd19bf8db.jpeg'),
+(22, 'Ana', '11678577546', 'ana@func.com', 'ana123', '3', '6685d6427d295.jpeg'),
+(23, 'Paulo', '11678767865', 'paulo@func.com', 'paulo123', '2', '6685d66863c21.jpeg'),
+(24, 'Maria', '11847587583', 'maria@func.com', 'maria123', '1', '6685d6855df0d.jpeg');
 
 --
 -- Índices para tabelas despejadas
@@ -191,7 +210,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de tabela `estoque`
 --
 ALTER TABLE `estoque`
-  MODIFY `ProdutoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `ProdutoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT de tabela `fornecedores`
@@ -203,7 +222,7 @@ ALTER TABLE `fornecedores`
 -- AUTO_INCREMENT de tabela `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Restrições para tabelas despejadas

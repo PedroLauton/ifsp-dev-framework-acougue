@@ -1,8 +1,7 @@
 <?php
     include_once "../control/gerenciadorSessao.php";
-    include_once "../control/verificarSessao.php";
 
-    
+    GerenciadorSessao::verificarLogado();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -11,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../img/logo.png">
     <link rel="stylesheet" href="../css/login.css">
-    <title>Açougu-E | Login</title>
+    <title>Login</title>
 </head>
 <body>
     <header class="cabecalho">

@@ -1,5 +1,8 @@
 <?php
     include_once "../control/funcionarioControl.php";
+    include_once "../control/gerenciadorSessao.php";
+    
+    GerenciadorSessao::verificaLoginAdm();
 
     $dadosFuncionario = new Funcionario;
     $nome = isset($_POST['cxNomeFunc']) ? $_POST['cxNomeFunc'] : null;
@@ -17,7 +20,7 @@
 <body>
     <header class="cabecalho">
         <nav class="cabecalho__navegacao">
-            <a href="menuAdm.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
+            <a href="vitrine.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
             <span class="cabecalho__navegacao__Marca">Açougu-<span class="cabecalho__navegacao__Marca__Estilo">E</span></span>
         </nav>
     </header>
@@ -53,7 +56,12 @@
                             </div>
                             <div class="container__conteudo__funcionarios__divisoes">
                                 <label class="container__conteudo__funcionarios__divisoes__titulo">Cargo:</label>
-                                <input class="container__conteudo__funcionarios__divisoes__input" type="text" name="cxCargo" value="<?php echo ($funcionario['Cargo']); ?>" readonly>
+                                <select id="cargo" name="cxCargo" disabled>
+                                    <option value="1" <?php echo ($funcionario['Cargo'] == 1) ? 'selected' : ''; ?>>Auxiliar</option>
+                                    <option value="2" <?php echo ($funcionario['Cargo'] == 2) ? 'selected' : ''; ?>>Gerente</option>
+                                    <option value="3" <?php echo ($funcionario['Cargo'] == 3) ? 'selected' : ''; ?>>Chefe</option>
+                                    <option value="4" <?php echo ($funcionario['Cargo'] == 4) ? 'selected' : ''; ?>>CEO</option>
+                                </select>
                             </div>
                             <div class="container__conteudo__funcionarios__divisoes">
                                 <label class="container__conteudo__funcionarios__divisoes__titulo">Foto:</label>
@@ -68,7 +76,7 @@
                         </section>
                     <?php endforeach; ?> 
                 <?php else:?>
-                    <p class="container__conteudo__auxiliar__semproduto">Nenhum funcionário encontrado.</p>
+                    <p class="container__conteudo__auxiliar__semfuncionario">Nenhum funcionário encontrado.</p>
                 <?php endif;?>
                 <button class="container__conteudo__auxiliar__voltar"><a class="container__conteudo__auxiliar__voltar_link" href="gerenciarFuncionario.php">Voltar</a></button>
             </div> 

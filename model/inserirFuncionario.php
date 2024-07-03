@@ -30,3 +30,4 @@
 
     $dadosFuncionario->inserirFuncionario($nome, $telefone, $email, $senha, $cargo, $foto);
     header("Location: ../view/gerenciarFuncionario.php");
+?>

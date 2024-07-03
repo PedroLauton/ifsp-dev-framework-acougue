@@ -44,13 +44,48 @@
         }
 
         public function deletarFuncionario($id) {
-            $query = "DELETE FROM funcionarios WHERE Id=:id";
-            $deletar = $this->conn->prepare($query);
-            $deletar->bindParam(':id', $id, PDO::PARAM_INT);
-            $deletar->execute();
+            $query = "SELECT Foto FROM funcionarios WHERE Id=:id";
+            $selecaoPorId = $this->conn->prepare($query);
+            $selecaoPorId->bindParam(':id', $id, PDO::PARAM_INT);
+            $selecaoPorId->execute();
+            $funcionario = $selecaoPorId->fetch(PDO::FETCH_ASSOC);
+    
+            if ($funcionario) {
+                $nomeImagem = $funcionario['Foto'];
+    
+                $query = "DELETE FROM funcionarios WHERE Id=:id";
+                $deletar = $this->conn->prepare($query);
+                $deletar->bindParam(':id', $id, PDO::PARAM_INT);
+                $deletar->execute();
+    
+                $caminhoImagem = "../img/" . $nomeImagem;
+                if (file_exists($caminhoImagem)) {
+                    unlink($caminhoImagem);
+                }
+            }
+        }
+
+        public function updateFuncionarioSemFoto($id, $nome, $telefone, $email, $senha, $cargo) {
+            $query = "UPDATE funcionarios SET Nome=:nome, Telefone=:telefone, Email=:email, Senha=:senha, Cargo=:cargo WHERE Id=:id";
+            $update = $this->conn->prepare($query);
+            $update->bindParam(':id', $id, PDO::PARAM_INT);
+            $update->bindParam(':nome', $nome, PDO::PARAM_STR);
+            $update->bindParam(':telefone', $telefone, PDO::PARAM_STR);
+            $update->bindParam(':email', $email, PDO::PARAM_STR);
+            $update->bindParam(':senha', $senha, PDO::PARAM_STR);
+            $update->bindParam(':cargo', $cargo, PDO::PARAM_STR);
+            $update->execute();
         }
 
         public function updateFuncionario($id, $nome, $telefone, $email, $senha, $cargo, $foto) {
+            $queryFotoAtual = "SELECT Foto FROM funcionarios WHERE Id=:id";
+            $stmtFotoAtual = $this->conn->prepare($queryFotoAtual);
+            $stmtFotoAtual->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmtFotoAtual->execute();
+            $funcionario = $stmtFotoAtual->fetch(PDO::FETCH_ASSOC);
+            
+            $nomeFotoAntiga = $funcionario['Foto'];
+    
             $query = "UPDATE funcionarios SET Nome=:nome, Telefone=:telefone, Email=:email, Senha=:senha, Cargo=:cargo, Foto=:foto WHERE Id=:id";
             $update = $this->conn->prepare($query);
             $update->bindParam(':id', $id, PDO::PARAM_INT);
@@ -61,6 +96,13 @@
             $update->bindParam(':cargo', $cargo, PDO::PARAM_STR);
             $update->bindParam(':foto', $foto, PDO::PARAM_STR);
             $update->execute();
+    
+            if (!empty($foto)) {
+                $caminhoFotoAntiga = "../img/" . $nomeFotoAntiga;
+                if (file_exists($caminhoFotoAntiga)) {
+                    unlink($caminhoFotoAntiga);
+                }
+            }
         }
 
         public function validarImagem($foto) {

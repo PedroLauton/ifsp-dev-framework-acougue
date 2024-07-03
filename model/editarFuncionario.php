@@ -11,6 +11,18 @@
     $dadosFuncionario->setSenha($_POST['cxSenha']);
     $dadosFuncionario->setTelefone($_POST['cxTelefone']);
     $dadosFuncionario->setCargo($_POST['cxCargo']);
+    
+    $id = $dadosFuncionario->getId();
+    $nome = $dadosFuncionario->getNome();
+    $email = $dadosFuncionario->getEmail();
+    $senha = $dadosFuncionario->getSenha();
+    $telefone = $dadosFuncionario->getTelefone();
+    $cargo = $dadosFuncionario->getCargo();
+
+    if($foto == null){
+        $dadosFuncionario->updateFuncionarioSemFoto($id, $nome, $telefone, $email, $senha, $cargo);
+        header("Location: ../view/gerenciarFuncionario.php");
+    }
 
     $foto = $_FILES["cxFoto"];
     $nomeImagem = $dadosFuncionario->salvarImagem($foto);
@@ -22,13 +34,9 @@
         exit;
     }
 
-    $id = $dadosFuncionario->getId();
-    $nome = $dadosFuncionario->getNome();
-    $email = $dadosFuncionario->getEmail();
-    $senha = $dadosFuncionario->getSenha();
-    $telefone = $dadosFuncionario->getTelefone();
-    $cargo = $dadosFuncionario->getCargo();
+    
     $foto = $dadosFuncionario->getFoto();
 
     $dadosFuncionario->updateFuncionario($id, $nome, $telefone, $email, $senha, $cargo, $foto);
     header("Location: ../view/gerenciarFuncionario.php");
+?>

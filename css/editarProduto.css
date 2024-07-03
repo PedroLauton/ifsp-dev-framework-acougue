@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Chau+Philomene+One:ital@0;1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap'); /* Adicionado para a fonte PT Sans */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap'); 
 
 :root {
     --cor-vinho: #400000;
@@ -147,7 +147,7 @@ main {
     align-items: center;
     flex-direction: column;
 }
-.container__conteudo__funcionarios{
+.container__conteudo__produtos{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -159,18 +159,33 @@ main {
     background-color: transparent;
     width: 100%;
 }
-.container__conteudo__funcionarios__divisoes{
+.container__conteudo__produtos__divisoes{
     display: flex;
     flex-direction: column;
     align-items: center;
     color: var(--cor-preto);
     text-align: center;
 }
-.container__conteudo__funcionarios__divisoes__titulo{
+.container__conteudo__produtos__divisoes__titulo{
     color: var(--cor-preto);
     margin-bottom: 0.5rem;
 }
-.container__conteudo__funcionarios__divisoes__input{
+.container__conteudo__produtos__divisoes__titulo__file{
+    margin: 0.5rem 0;
+    padding: 0.3rem;    
+}
+.container__conteudo__produtos__divisoes__titulo__file_imagem{
+    width: 3rem;
+}
+.container__conteudo__produtos__divisoes__texto{
+    font-size: 0.7rem;
+    color: var(--cor-preto);
+}
+.custom-file-input{
+    display: flex;
+    flex-direction: column;
+}
+.container__conteudo__produtos__divisoes__input{
     background-color: transparent;
     color: var(--cor-preto);
     border: none;
@@ -179,7 +194,7 @@ main {
     width: 4rem;
     margin-bottom: 1rem;
 }
-.container__conteudo__funcionarios__divisoes__imagem{
+.container__conteudo__produtos__divisoes__imagem{
     width: 2rem;
     margin: 1rem 1rem;
 }
@@ -200,13 +215,16 @@ main {
     color: var(--cor-vinho);
     text-decoration: none;
 }
-.container__conteudo__funcionarios__divisoes__button{
+.container__conteudo__produtos__divisoes__button{
     font-weight: 900;
     font-size: 1.5rem;
     color: green;
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+option, select{
+    color: var(--cor-preto);
 }
 .footer {
     background-color: var(--cor-vinho);
@@ -233,11 +251,11 @@ main {
     .cabecalho__navegacao__Marca {
         font-size: 4rem;
     }
-    .container__conteudo__funcionarios{
+    .container__conteudo__produtos{
         flex-direction: row;
         flex-wrap: wrap;
      }
-     .container__conteudo__funcionarios__divisoes{
+     .container__conteudo__produtos__divisoes{
          margin: 0 1rem;
          width: 10%;
      }

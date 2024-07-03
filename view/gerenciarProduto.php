@@ -1,7 +1,9 @@
 <?php
         include_once "../control/gerenciadorSessao.php";
-        include_once "../control/verificarSessao.php";  
         include_once "../control/produtoControl.php";
+    
+        GerenciadorSessao::verificaLogin();
+
         $dadosprodutos = new Produto;
         $produtos = $dadosprodutos->listarTodos();
 ?>
@@ -17,7 +19,7 @@
 <body>
     <header class="cabecalho">
         <nav class="cabecalho__navegacao">
-            <a href="menuAdm.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
+            <a href="vitrine.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
             <span class="cabecalho__navegacao__Marca">Açougu-<span class="cabecalho__navegacao__Marca__Estilo">E</span></span>
         </nav>
     </header>
@@ -48,12 +50,20 @@
                                 <input class="container__conteudo__produtos__divisoes__input" type="text" name="cxPreco" value="<?php echo ($produto['PrecoUnitario']); ?>" readonly>
                             </div>
                             <div class="container__conteudo__produtos__divisoes">
-                                <label class="container__conteudo__produtos__divisoes__titulo">Categoria ID:</label>
-                                <input class="container__conteudo__produtos__divisoes__input" type="text" name="cxCategoria" value="<?php echo ($produto['CategoriaId']); ?>" readonly>
+                                <label class="container__conteudo__produtos__divisoes__titulo">Categoria:</label>
+                                <select name="cxCategoria" disabled>
+                                    <option value="1" <?php echo ($produto['CategoriaId'] == 1) ? 'selected' : ''; ?>>Aves</option>
+                                    <option value="2" <?php echo ($produto['CategoriaId'] == 2) ? 'selected' : ''; ?>>Carne Bovina</option>
+                                    <option value="3" <?php echo ($produto['CategoriaId'] == 3) ? 'selected' : ''; ?>>Carne Suína</option>
+                                    <option value="4" <?php echo ($produto['CategoriaId'] == 4) ? 'selected' : ''; ?>>Frutos do mar</option>
+                                </select>
                             </div>
                             <div class="container__conteudo__produtos__divisoes">
-                                <label class="container__conteudo__produtos__divisoes__titulo">Fornecedor ID:</label>
-                                <input class="container__conteudo__produtos__divisoes__input" type="text" name="cxFornecedor" value="<?php echo ($produto['FornecedorId']); ?>" readonly>
+                                <label class="container__conteudo__produtos__divisoes__titulo">Fornecedor:</label>
+                                <select name="cxFornecedor" disabled>
+                                    <option value="1" <?php echo ($produto['FornecedorId'] == 1) ? 'selected' : ''; ?>>Fogonoboi</option>
+                                    <option value="2" <?php echo ($produto['FornecedorId'] == 2) ? 'selected' : ''; ?>>FazuelleCortes</option>
+                                </select>
                             </div>
                             <div class="container__conteudo__produtos__divisoes">
                                 <label class="container__conteudo__produtos__divisoes__titulo">Foto:</label>

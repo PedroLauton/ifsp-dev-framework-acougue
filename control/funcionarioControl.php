@@ -100,5 +100,9 @@
         public function updateFuncionario($id, $nome, $telefone, $email, $senha, $cargo, $foto) {
             return $this->funcionarioModel->updateFuncionario($id, $nome, $telefone, $email, $senha, $cargo, $foto);
         }
+
+        public function updateFuncionarioSemFoto($id, $nome, $telefone, $email, $senha, $cargo) {
+            return $this->funcionarioModel->updateFuncionarioSemFoto($id, $nome, $telefone, $email, $senha, $cargo);
+        }
     }
 ?>

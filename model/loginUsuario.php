@@ -3,6 +3,8 @@
     include_once "../control/gerenciadorSessao.php";
     include_once "../factory/conexao.php";
 
+    GerenciadorSessao::iniciarSessao();
+
     $dados = new DadosLogin;
 
     $dados->setEmail($_POST['cxEmail']);

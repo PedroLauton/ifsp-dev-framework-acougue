@@ -1,5 +1,8 @@
 <?php
     include_once "../control/produtoControl.php";
+    include_once "../control/gerenciadorSessao.php";
+    
+    GerenciadorSessao::verificaLogin();
 
     $dadosProdutos = new Produto;
     $id = isset($_GET['id']) ? $_GET['id'] : null;
@@ -12,12 +15,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../img/logo.png">
     <link rel="stylesheet" href="../css/editarProduto.css">
-    <title>Editar produto</title>
+    <script src="../js/editarProduto.js" defer></script>
+    <title>Editar produtos</title>
 </head>
 <body>
     <header class="cabecalho">
         <nav class="cabecalho__navegacao">
-            <a href="menuAdm.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
+            <a href="vitrine.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
             <span class="cabecalho__navegacao__Marca">Açougu-<span class="cabecalho__navegacao__Marca__Estilo">E</span></span>
         </nav>
     </header>
@@ -31,42 +35,53 @@
                     <button class="container__conteudo__centralizar__pesquisa__button"><img class="container__conteudo__centralizar__pesquisa__imagem" src="../img/pesquisar.png" alt="Imagem Lupa"></button>
                 </form>
             </div>
-            <form action="../model/editarProduto.php" method="POST" enctype="multipart/form-data">
+            <form id="formEditarProduto" action="../model/editarProduto.php" method="POST" enctype="multipart/form-data">
                 <div class="container__conteudo__auxiliar">
                     <?php if (!empty($produtos)): ?>
                         <?php foreach($produtos as $produto): ?>
-                            <section class="container__conteudo__funcionarios">
+                            <section class="container__conteudo__produtos">
                                 <input type="hidden" name="ProdutoId" value="<?php echo ($produto['ProdutoId']); ?>">
-                                <div class="container__conteudo__funcionarios__divisoes">
-                                    <label class="container__conteudo__funcionarios__divisoes__titulo">Nome:</label>
-                                    <input class="container__conteudo__funcionarios__divisoes__input" type="text" name="cxNome" value="<?php echo ($produto['NomeProduto']); ?>" required>
+                                <div class="container__conteudo__produtos__divisoes">
+                                    <label class="container__conteudo__produtos__divisoes__titulo">Nome:</label>
+                                    <input class="container__conteudo__produtos__divisoes__input" type="text" name="cxNome" value="<?php echo ($produto['NomeProduto']); ?>" required>
                                 </div>
-                                <div class="container__conteudo__funcionarios__divisoes">
-                                    <label class="container__conteudo__funcionarios__divisoes__titulo">Porção(Kg):</label>
-                                    <input class="container__conteudo__funcionarios__divisoes__input" type="text" name="cxPorcao" value="<?php echo ($produto['PorcaoUnidadeKg']); ?>" required>
+                                <div class="container__conteudo__produtos__divisoes">
+                                    <label class="container__conteudo__produtos__divisoes__titulo">Porção(Kg):</label>
+                                    <input class="container__conteudo__produtos__divisoes__input" type="text" name="cxPorcao" value="<?php echo ($produto['PorcaoUnidadeKg']); ?>" required>
                                 </div>
-                                <div class="container__conteudo__funcionarios__divisoes">
-                                    <label class="container__conteudo__funcionarios__divisoes__titulo">Preço Unitário:</label>
-                                    <input class="container__conteudo__funcionarios__divisoes__input" type="text" name="cxPreco" value="<?php echo ($produto['PrecoUnitario']); ?>" required>
+                                <div class="container__conteudo__produtos__divisoes">
+                                    <label class="container__conteudo__produtos__divisoes__titulo">Preço Unitário:</label>
+                                    <input class="container__conteudo__produtos__divisoes__input" type="text" name="cxPreco" value="<?php echo ($produto['PrecoUnitario']); ?>" required>
                                 </div>
-                                <div class="container__conteudo__funcionarios__divisoes">
-                                    <label class="container__conteudo__funcionarios__divisoes__titulo">Categoria ID:</label>
-                                    <input class="container__conteudo__funcionarios__divisoes__input" type="text" name="cxCategoria" value="<?php echo ($produto['CategoriaId']); ?>" required>
+                                <div class="container__conteudo__produtos__divisoes">
+                                    <label class="container__conteudo__produtos__divisoes__titulo">Categoria:</label>
+                                    <select name="cxCategoria" required>
+                                        <option value="1" <?php echo ($produto['CategoriaId'] == 1) ? 'selected' : ''; ?>>Aves</option>
+                                        <option value="2" <?php echo ($produto['CategoriaId'] == 2) ? 'selected' : ''; ?>>Carne Bovina</option>
+                                        <option value="3" <?php echo ($produto['CategoriaId'] == 3) ? 'selected' : ''; ?>>Carne Suína</option>
+                                        <option value="4" <?php echo ($produto['CategoriaId'] == 4) ? 'selected' : ''; ?>>Frutos do mar</option>
+                                    </select>
                                 </div>
-                                <div class="container__conteudo__funcionarios__divisoes">
-                                    <label class="container__conteudo__funcionarios__divisoes__titulo">Fornecedor ID:</label>
-                                    <input class="container__conteudo__funcionarios__divisoes__input" type="text" name="cxFornecedor" value="<?php echo ($produto['FornecedorId']); ?>" required>
+                                <div class="container__conteudo__produtos__divisoes">
+                                    <label class="container__conteudo__produtos__divisoes__titulo">Fornecedor:</label>
+                                    <select id="cargo" name="cxFornecedor" required>
+                                        <option value="1" <?php echo ($produto['FornecedorId'] == 1) ? 'selected' : ''; ?>>Fogonoboi</option>
+                                        <option value="2" <?php echo ($produto['FornecedorId'] == 2) ? 'selected' : ''; ?>>FazuelleCortes</option>
+                                    </select>
                                 </div>
-                                <div class="container__conteudo__funcionarios__divisoes">
-                                    <label class="container__conteudo__funcionarios__divisoes__titulo">Foto:</label>
+                                <div class="container__conteudo__produtos__divisoes">
+                                    <label class="container__conteudo__produtos__divisoes__titulo">Foto:</label>
                                     <div class="custom-file-input">
-                                        <label for="fotoProduto">Escolher arquivo</label>
-                                        <input type="file" name="cxFoto" id="fotoProduto" accept="image/*" required />
+                                        <label class="container__conteudo__produtos__divisoes__titulo__file" for="fotoProduto">
+                                            <img id="imagemProduto" class="container__conteudo__produtos__divisoes__titulo__file_imagem" src="../img/<?php echo ($produto['fotoProduto']); ?>" alt="Upload">
+                                        </label>
+                                        <span id="nomeImagem" class="container__conteudo__produtos__divisoes__texto" for="fotoProduto"><?php echo ($produto['fotoProduto'] == true) ? 'Nova imagem?' : ''; ?></span>
+                                        <input type="file" name="cxFoto" id="fotoProduto" accept="image/*" onchange="exibirImagem(this)" />
                                     </div>
                                 </div>
-                                <div class="container__conteudo__funcionarios__divisoes">
+                                <div class="container__conteudo__produtos__divisoes">
                                     <div>
-                                    <button class="container__conteudo__funcionarios__divisoes__button">Salvar</button>
+                                    <button class="container__conteudo__produtos__divisoes__button">Salvar</button>
                                     </div>
                                 </div>
                             </section>

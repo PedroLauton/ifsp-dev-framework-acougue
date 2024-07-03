@@ -1,8 +1,12 @@
 <?php
     include_once "../control/gerenciadorSessao.php";
-    include_once "../control/verificarSessao.php";
-
+    include_once "../control/admUsuarioControl.php";
     
+    GerenciadorSessao::verificaLoginAdm();
+
+    $dados = new Administrador;
+    $adm = $dados->listarAdm(GerenciadorSessao::obterSessao('Id'));
+    $nomeAdm = $adm->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -16,15 +20,16 @@
 <body>
     <header class="cabecalho">
         <nav class="cabecalho__navegacao">
-            <a href="menuAdm.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
+            <a href="vitrine.php"><img class="cabecalho__navegacao__logo" src="../img/logo.png" alt="Logo Açougu-E"></a>
             <span class="cabecalho__navegacao__Marca">Açougu-<span class="cabecalho__navegacao__Marca__Estilo">E</span></span>
         </nav>
     </header>
     <main class="container">
-        <h1 class="container__titulo">Bem-vindo, Administrador!</h1>
+        <h1 class="container__titulo">Bem-vindo(a), <?php echo $nomeAdm['Nome']; ?>!</h1>
         <ul class="container__lista">
             <a class="container__lista__item" href="gerenciarFuncionario.php">Gerenciar funcionários</a> <br>
             <a class="container__lista__item" href="gerenciarProduto.php">Gerenciar produtos</a><br>
+            <a class="container__lista__item" href="vitrine.php">Ir para Vitrine</a><br>
             <a  class="container__lista__sair"href="../control/logout.php">Sair</a><br>
         </ul>
     </main>

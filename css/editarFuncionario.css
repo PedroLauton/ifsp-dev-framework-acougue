@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Chau+Philomene+One:ital@0;1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap'); /* Adicionado para a fonte PT Sans */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap'); 
 
 :root {
     --cor-vinho: #400000;
@@ -205,8 +205,22 @@ main {
     border: none;
     cursor: pointer;
 }
+.container__conteudo__funcionarios__divisoes__texto{
+    font-size: 0.7rem;
+    color: var(--cor-preto);
+}
+.custom-file-input{
+    display: flex;
+    flex-direction: column;
+}
 .container__conteudo__funcionarios__divisoes__titulo__foto{
     width: 3rem;
+}
+.container__conteudo__funcionarios__divisoes__titulo__file_imagem{
+    width: 3rem;
+}
+#fotoFuncionario{
+    display: none;
 }
 option, select{
     color: var(--cor-preto);

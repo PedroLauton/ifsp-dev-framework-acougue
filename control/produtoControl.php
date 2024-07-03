@@ -103,4 +103,9 @@
         public function updateProduto($id, $nome, $preco, $porcao, $categoria, $fornecedor, $foto){
             return $this->produtoModel->updateProduto($id, $nome, $preco, $porcao, $categoria, $fornecedor, $foto);
         }
+
+        public function updateProdutoSemfoto($id, $nome, $preco, $porcao, $categoria, $fornecedor){
+            return $this->produtoModel->updateProdutoSemFoto($id, $nome, $preco, $porcao, $categoria, $fornecedor);
+        }
     }
+?>
