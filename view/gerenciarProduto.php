@@ -1,18 +1,18 @@
+<?php
+        include_once "../control/gerenciadorSessao.php";
+        include_once "../control/verificarSessao.php";  
+        include_once "../control/produtoControl.php";
+        $dadosprodutos = new Produto;
+        $produtos = $dadosprodutos->listarTodos();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../img/logo.png">
-    <link rel="stylesheet" href="../css/gerenciarProdutos.css">
+    <link rel="stylesheet" href="../css/gerenciarprodutos.css">
     <title>Gerenciar produtos</title>
-    <?php
-        include_once "../control/gerenciadorSessao.php";
-        include_once "../control/verificarSessao.php";  
-        include_once "../control/produtoControl.php";
-        $dadosProdutos = new Produto;
-        $produtos = $dadosProdutos->listarTodos();
-    ?>
 </head>
 <body>
     <header class="cabecalho">
@@ -34,35 +34,35 @@
             <div class="container__conteudo__auxiliar">
                 <?php if (!empty($produtos)): ?>
                     <?php foreach($produtos as $produto): ?>
-                        <section class="container__conteudo__funcionarios">
-                            <div class="container__conteudo__funcionarios__divisoes">
-                                <label class="container__conteudo__funcionarios__divisoes__titulo">Nome:</label>
-                                <input class="container__conteudo__funcionarios__divisoes__input" type="text" name="nomeProduto" value="<?php echo ($produto['NomeProduto']); ?>" readonly>
+                        <section class="container__conteudo__produtos">
+                            <div class="container__conteudo__produtos__divisoes">
+                                <label class="container__conteudo__produtos__divisoes__titulo">Nome:</label>
+                                <input class="container__conteudo__produtos__divisoes__input" type="text" name="cxProduto" value="<?php echo ($produto['NomeProduto']); ?>" readonly>
                             </div>
-                            <div class="container__conteudo__funcionarios__divisoes">
-                                <label class="container__conteudo__funcionarios__divisoes__titulo">Porção(Kg):</label>
-                                <input class="container__conteudo__funcionarios__divisoes__input" type="text" name="porcaoUnidade" value="<?php echo ($produto['PorcaoUnidadeKg']); ?>" readonly>
+                            <div class="container__conteudo__produtos__divisoes">
+                                <label class="container__conteudo__produtos__divisoes__titulo">Porção(Kg):</label>
+                                <input class="container__conteudo__produtos__divisoes__input" type="text" name="cxProcao" value="<?php echo ($produto['PorcaoUnidadeKg']); ?>" readonly>
                             </div>
-                            <div class="container__conteudo__funcionarios__divisoes">
-                                <label class="container__conteudo__funcionarios__divisoes__titulo">Preço Unitário:</label>
-                                <input class="container__conteudo__funcionarios__divisoes__input" type="text" name="precoUnitario" value="<?php echo ($produto['PrecoUnitario']); ?>" readonly>
+                            <div class="container__conteudo__produtos__divisoes">
+                                <label class="container__conteudo__produtos__divisoes__titulo">Preço Unitário:</label>
+                                <input class="container__conteudo__produtos__divisoes__input" type="text" name="cxPreco" value="<?php echo ($produto['PrecoUnitario']); ?>" readonly>
                             </div>
-                            <div class="container__conteudo__funcionarios__divisoes">
-                                <label class="container__conteudo__funcionarios__divisoes__titulo">Categoria ID:</label>
-                                <input class="container__conteudo__funcionarios__divisoes__input" type="text" name="categoriaId" value="<?php echo ($produto['CategoriaId']); ?>" readonly>
+                            <div class="container__conteudo__produtos__divisoes">
+                                <label class="container__conteudo__produtos__divisoes__titulo">Categoria ID:</label>
+                                <input class="container__conteudo__produtos__divisoes__input" type="text" name="cxCategoria" value="<?php echo ($produto['CategoriaId']); ?>" readonly>
                             </div>
-                            <div class="container__conteudo__funcionarios__divisoes">
-                                <label class="container__conteudo__funcionarios__divisoes__titulo">Fornecedor ID:</label>
-                                <input class="container__conteudo__funcionarios__divisoes__input" type="text" name="fornecedorId" value="<?php echo ($produto['FornecedorId']); ?>" readonly>
+                            <div class="container__conteudo__produtos__divisoes">
+                                <label class="container__conteudo__produtos__divisoes__titulo">Fornecedor ID:</label>
+                                <input class="container__conteudo__produtos__divisoes__input" type="text" name="cxFornecedor" value="<?php echo ($produto['FornecedorId']); ?>" readonly>
                             </div>
-                            <div class="container__conteudo__funcionarios__divisoes">
-                                <label class="container__conteudo__funcionarios__divisoes__titulo">Foto:</label>
-                                <img src="<?php echo ($produto['fotoProduto']); ?>" alt="Foto do Produto" />
+                            <div class="container__conteudo__produtos__divisoes">
+                                <label class="container__conteudo__produtos__divisoes__titulo">Foto:</label>
+                                <?php echo '<img src="../img/'.$produto['fotoProduto'].'" alt="Foto do Produto" class="container__conteudo__produtos__divisoes__titulo__foto"><br>'?>
                             </div>
-                            <div class="container__conteudo__funcionarios__divisoes">
+                            <div class="container__conteudo__produtos__divisoes">
                                 <div>
-                                    <a href="deletarProduto.php?id=<?php echo ($produto['ProdutoId']);?>"><img class="container__conteudo__funcionarios__divisoes__imagem" src="../img/excluir.png" alt="Editar"></a>
-                                    <a href="editarProduto.php?id=<?php echo ($produto['ProdutoId']);?>"><img class="container__conteudo__funcionarios__divisoes__imagem" src="../img/editar.png" alt="Editar"></a>
+                                    <a href="deletarProduto.php?id=<?php echo ($produto['ProdutoId']);?>"><img class="container__conteudo__produtos__divisoes__imagem" src="../img/excluir.png" alt="Editar"></a>
+                                    <a href="editarProduto.php?id=<?php echo ($produto['ProdutoId']);?>"><img class="container__conteudo__produtos__divisoes__imagem" src="../img/editar.png" alt="Editar"></a>
                                 </div>
                             </div>
                         </section>
@@ -70,7 +70,7 @@
                 <?php else:?>
                     <p class="container__conteudo__auxiliar__semproduto">Nenhum produto cadastrado.</p>
                 <?php endif;?>
-                <?php if(VerificarSessao::verificarSeAdministrador()): ?>
+                <?php if(GerenciadorSessao::obterSessao('contribuidor') == 'administradores'): ?>
                     <button class="container__conteudo__auxiliar__voltar"><a class="container__conteudo__auxiliar__voltar_link" href="menuAdm.php">Voltar</a></button>
                 <?php else:?>
                     <button class="container__conteudo__auxiliar__voltar"><a class="container__conteudo__auxiliar__voltar_link" href="menuFuncionario.php">Voltar</a></button>

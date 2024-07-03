@@ -56,11 +56,11 @@ main {
     width: 5rem;
 }
 .cabecalho__navegacao__Marca {
-    font-size: 2rem;
+    font-size: 3rem;
     font-family: var(--fonte2);
 }
 .cabecalho__navegacao__Marca__Estilo {
-    font-size: 2rem;
+    font-size: 3rem;
     font-family: var(--fonte2);
     color: var(--cor-laranja);
 }

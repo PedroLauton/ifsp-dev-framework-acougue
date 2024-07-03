@@ -60,7 +60,7 @@ main {
     font-family: var(--fonte2);
 }
 .cabecalho__navegacao__Marca__Estilo {
-    font-size: 2rem;
+    font-size: 3rem;
     font-family: var(--fonte2);
     color: var(--cor-laranja);
 }
@@ -166,6 +166,9 @@ main {
 .container__conteudo__funcionarios__divisoes__titulo{
     color: var(--cor-preto);
     margin-bottom: 0.5rem;
+}
+.container__conteudo__produtos__divisoes__titulo__foto{
+    width: 3rem;
 }
 .container__conteudo__funcionarios__divisoes__input{
     background-color: transparent;

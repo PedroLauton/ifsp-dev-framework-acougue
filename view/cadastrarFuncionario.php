@@ -17,7 +17,7 @@
     <main class="container">
         <section class="container__conteudo">
             <h1 class="container__conteudo__titulo">Cadastro de funcionário</h1>
-            <form class="container__conteudo__cadastro" action="../model/inserirFuncionario.php" method="POST">
+            <form class="container__conteudo__cadastro" action="../model/inserirFuncionario.php" method="POST" enctype="multipart/form-data">
                 <span class="container__conteudo__cadastro__titulo">Nome:</span>
                 <input class="container__conteudo__cadastro__input" type="text" name="cxNome" required>
                 <span class="container__conteudo__cadastro__titulo">Telefone:</span>
@@ -34,7 +34,7 @@
                         <option value="4">CEO</option>
                     </select>
                 <span class="container__conteudo__cadastro__titulo foto">Foto:</span>
-                <input class="container__conteudo__cadastro__input__file"type="file" name="cxFoto" required>
+                <input class="container__conteudo__cadastro__input__file" type="file" name="cxFoto" accept="image/*" required>
                 <button class="container__conteudo__cadastro__button">Enviar</button>
             </form>
         </section>

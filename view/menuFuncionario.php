@@ -1,11 +1,8 @@
 <?php
-include_once "../control/gerenciadorSessao.php";
-include_once "../control/verificarSessao.php";
+    include_once "../control/gerenciadorSessao.php";
+    include_once "../control/verificarSessao.php";
 
-GerenciadorSessao::iniciarSessao(); // Inicia a sessão usando a classe GerenciadorSessao
-VerificarSessao::verificarAcesso(VerificarSessao::FUNCIONARIOS); // Verifica se o usuário é um administrador
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

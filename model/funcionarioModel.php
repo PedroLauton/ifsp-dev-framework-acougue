@@ -17,12 +17,7 @@
             $inserir->bindParam(':senha', $senha, PDO::PARAM_STR);
             $inserir->bindParam(':cargo', $cargo, PDO::PARAM_STR);
             $inserir->bindParam(':foto', $foto, PDO::PARAM_STR);
-            try {
-                $inserir->execute();
-            } catch(PDOException $e) {
-                echo "Erro: " . $e->getMessage();
-                return false;
-            }
+            $inserir->execute();
         }
 
         public function listarTodos() {
@@ -55,8 +50,8 @@
             $deletar->execute();
         }
 
-        public function updateFuncionario($id, $nome, $telefone, $email, $senha, $cargo) {
-            $query = "UPDATE funcionarios SET Nome=:nome, Telefone=:telefone, Email=:email, Senha=:senha, Cargo=:cargo WHERE Id=:id";
+        public function updateFuncionario($id, $nome, $telefone, $email, $senha, $cargo, $foto) {
+            $query = "UPDATE funcionarios SET Nome=:nome, Telefone=:telefone, Email=:email, Senha=:senha, Cargo=:cargo, Foto=:foto WHERE Id=:id";
             $update = $this->conn->prepare($query);
             $update->bindParam(':id', $id, PDO::PARAM_INT);
             $update->bindParam(':nome', $nome, PDO::PARAM_STR);
@@ -64,7 +59,39 @@
             $update->bindParam(':email', $email, PDO::PARAM_STR);
             $update->bindParam(':senha', $senha, PDO::PARAM_STR);
             $update->bindParam(':cargo', $cargo, PDO::PARAM_STR);
+            $update->bindParam(':foto', $foto, PDO::PARAM_STR);
             $update->execute();
+        }
+
+        public function validarImagem($foto) {
+            if (isset($foto) && $foto['error'] == 0) {
+                $extensao = strtolower(pathinfo($foto['name'], PATHINFO_EXTENSION));
+                $tiposPermitidos = array('jpg', 'jpeg', 'png', 'gif');
+    
+                if (in_array($extensao, $tiposPermitidos)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+    
+        public function salvarImagem($foto) {
+            if ($this->validarImagem($foto)) {
+                $extensao = strtolower(pathinfo($foto['name'], PATHINFO_EXTENSION));
+                $nomeImagem = uniqid() . '.' . $extensao;
+                $caminhoImagem = "../img/" . $nomeImagem;
+    
+                if (move_uploaded_file($foto['tmp_name'], $caminhoImagem)) {
+                    return $nomeImagem;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
         }
     }
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30/06/2024 às 01:30
+-- Tempo de geração: 03/07/2024 às 06:44
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -61,8 +61,7 @@ INSERT INTO `categorias` (`CategoriaId`, `NomeCategoria`) VALUES
 (1, 'Aves'),
 (2, 'Carne Bovina'),
 (3, 'Carne Suína'),
-(4, 'Frutos do Mar'),
-(6, 'Queijos');
+(4, 'Frutos do Mar');
 
 -- --------------------------------------------------------
 
@@ -85,10 +84,8 @@ CREATE TABLE `estoque` (
 --
 
 INSERT INTO `estoque` (`ProdutoId`, `NomeProduto`, `PorcaoUnidadeKg`, `PrecoUnitario`, `CategoriaId`, `FornecedorId`, `fotoProduto`) VALUES
-(42, 'Batata', 1, 1, 1, 1, '_0ee1a2ed-38d5-4264-8e59-105c155eae90.jpeg'),
-(43, 'Feijão', 1, 1, 1, 1, '_0ee1a2ed-38d5-4264-8e59-105c155eae90.jpeg'),
-(44, 'Maconha', 1, 1, 1, 1, '_0ee1a2ed-38d5-4264-8e59-105c155eae90.jpeg'),
-(45, 'Picanha', 1, 1, 1, 1, '_0ee1a2ed-38d5-4264-8e59-105c155eae90.jpeg');
+(71, 'Costela', 1, 45, 2, 1, '6684d3732e4c2.jpeg'),
+(72, 'Picanha', 1, 1, 1, 1, '6684d37aaf326.jpeg');
 
 -- --------------------------------------------------------
 
@@ -124,19 +121,17 @@ CREATE TABLE `funcionarios` (
   `Telefone` varchar(50) NOT NULL,
   `Email` varchar(100) NOT NULL,
   `Senha` char(64) NOT NULL,
-  `Cargo` varchar(50) NOT NULL
+  `Cargo` varchar(50) NOT NULL,
+  `Foto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `funcionarios`
 --
 
-INSERT INTO `funcionarios` (`Id`, `Nome`, `Telefone`, `Email`, `Senha`, `Cargo`) VALUES
-(3, 'Alan', '(11) 67546764', 'alan@fun.com', 'alan123', 'Auxiliar'),
-(4, 'Vinicius', '(11) 758467593', 'vini@fun.com', 'vini123', 'Auxiliar'),
-(5, 'Caio', '(11) 83950483', 'caio@fun.com', 'caio123', 'Gerente'),
-(6, 'Pedro Lauton', '(11)  748395849', 'lauton@fun.com', 'lauton123', 'Chefe'),
-(7, 'Sérgio', '(11) 5784839274', 'sergio@fun.com', 'sergio123', 'CEO');
+INSERT INTO `funcionarios` (`Id`, `Nome`, `Telefone`, `Email`, `Senha`, `Cargo`, `Foto`) VALUES
+(18, 'Vinicius', '11945490833', 'vinicius@gmail.com', 'vini123', '1', '6684d32ccbfd4.jpeg'),
+(19, 'Paulo', '11968574633', 'paulo@gmai.com', 'paulo123', '2', '6684d348ad37b.jpeg');
 
 --
 -- Índices para tabelas despejadas
@@ -196,7 +191,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de tabela `estoque`
 --
 ALTER TABLE `estoque`
-  MODIFY `ProdutoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `ProdutoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT de tabela `fornecedores`
@@ -208,7 +203,7 @@ ALTER TABLE `fornecedores`
 -- AUTO_INCREMENT de tabela `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Restrições para tabelas despejadas

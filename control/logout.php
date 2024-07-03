@@ -1,9 +1,7 @@
 <?php
-include_once "../control/gerenciadorSessao.php";
+    include_once "../control/gerenciadorSessao.php";
 
-GerenciadorSessao::iniciarSessao();
-GerenciadorSessao::destruirSessao();
+    GerenciadorSessao::destruirSessao();
 
-header("Location: ../view/login.php");
-exit();
+    header("Location: ../view/login.php");
 ?>

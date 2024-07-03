@@ -30,7 +30,7 @@
                     <button class="container__conteudo__centralizar__pesquisa__button"><img class="container__conteudo__centralizar__pesquisa__imagem" src="../img/pesquisar.png" alt="Imagem Lupa"></button>
                 </form>
             </div>
-            <form action="../model/deletarFuncionarioModel.php" method="POST">
+            <form action="../model/deletarFuncionario.php" method="POST">
                 <div class="container__conteudo__auxiliar">
                     <?php if (!empty($funcionarios)): ?>
                         <?php foreach($funcionarios as $funcionario): ?>
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="container__conteudo__funcionarios__divisoes">
                                     <label class="container__conteudo__funcionarios__divisoes__titulo">Foto:</label>
-                                    <img src="" alt="Foto do funcionário">
+                                    <?php echo '<img src="../img/'.$funcionario['Foto'].'" alt="Foto do Produto" class="container__conteudo__funcionarios__divisoes__titulo__foto"><br>'?>
                                 </div>
                                 <div class="container__conteudo__funcionarios__divisoes">
                                     <div>

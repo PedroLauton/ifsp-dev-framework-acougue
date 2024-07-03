@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../img/logo.png">
-    <link rel="stylesheet" href="../css/cadastroProduto.css">k
+    <link rel="stylesheet" href="../css/cadastroProduto.css">
     <title>Cadastrar produto</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
     <main class="container">
         <section class="container__conteudo">
             <h1 class="container__conteudo__titulo">Cadastro de produtos</h1>
-            <form class="container__conteudo__cadastro" action="../model/inserirProduto.php" method="POST">
+            <form class="container__conteudo__cadastro" action="../model/inserirProduto.php" method="POST" enctype="multipart/form-data">
                 <span class="container__conteudo__cadastro__titulo">Nome:</span>
                 <input class="container__conteudo__cadastro__input" type="text" name="cxNome" required>
                 <span class="container__conteudo__cadastro__titulo">Preço unitário:</span>
@@ -32,12 +32,12 @@
                         <option value="4">Frutos do mar</option>
                     </select>
                 <span class="container__conteudo__cadastro__titulo">Fornecedor:</span>
-                    <select class="container__conteudo__cadastro__input" id="produto" name="cxProduto">
+                    <select class="container__conteudo__cadastro__input" id="produto" name="cxFornecedor">
                         <option value="1">FazuelleCortes</option>
                         <option value="2">Fogonoboi</option>
                     </select>
                 <span class="container__conteudo__cadastro__titulo foto">Foto:</span>
-                <input class="container__conteudo__cadastro__input__file"type="file" name="cxFoto" required>
+                <input class="container__conteudo__cadastro__input__file" type="file" name="cxFoto" accept="image/*" required>
                 <button class="container__conteudo__cadastro__button">Enviar</button>
             </form>
         </section>

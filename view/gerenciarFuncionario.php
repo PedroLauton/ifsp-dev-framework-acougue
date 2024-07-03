@@ -1,16 +1,17 @@
+<?php
+    include_once "../control/funcionarioControl.php";
+
+    $dadosFuncionario = new Funcionario;
+    $funcionarios = $dadosFuncionario->listarTodos();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../img/logo.png">
-    <link rel="stylesheet" href="../css/gerenciarProdutos.css">
+    <link rel="stylesheet" href="../css/gerenciarFuncionarios.css">
     <title>Gerenciar funcionários</title>
-    <?php
-        include_once "../control/funcionarioControl.php";
-        $dadosFuncionario = new Funcionario;
-        $funcionarios = $dadosFuncionario->listarTodos();
-    ?>
 </head>
 <body>
     <header class="cabecalho">
@@ -55,18 +56,18 @@
                             </div>
                             <div class="container__conteudo__funcionarios__divisoes">
                                 <label class="container__conteudo__funcionarios__divisoes__titulo">Foto:</label>
-                                <img src="<?php echo ($produto['Foto']); ?>" alt="Foto do Produto" />
+                                <?php echo '<img src="../img/'.$funcionario['Foto'].'" alt="Foto do Produto" class="container__conteudo__funcionarios__divisoes__titulo__foto"><br>'?>
                             </div>
                             <div class="container__conteudo__funcionarios__divisoes">
                                 <div>
-                                    <a href="deletarFuncionario.php?id=<?php echo ($funcionario['Id']);?>"><img class="container__conteudo__funcionarios__divisoes__imagem" src="../img/excluir.png" alt="Editar"></a>
+                                    <a href="deletarFuncionario.php?id=<?php echo ($funcionario['Id']); ?>"><img class="container__conteudo__funcionarios__divisoes__imagem" src="../img/excluir.png" alt="Editar"></a>
                                     <a href="editarFuncionario.php?id=<?php echo ($funcionario['Id']);?>"><img class="container__conteudo__funcionarios__divisoes__imagem" src="../img/editar.png" alt="Editar"></a>
                                 </div>
                             </div>
                         </section>
                     <?php endforeach; ?> 
                 <?php else:?>
-                    <p class="container__conteudo__auxiliar__semproduto">Nenhum funcionário cadastrado.</p>
+                    <p class="container__conteudo__auxiliar__semfuncionario">Nenhum funcionário cadastrado.</p>
                 <?php endif;?>
                 <button class="container__conteudo__auxiliar__voltar"><a class="container__conteudo__auxiliar__voltar_link" href="menuAdm.php">Voltar</a></button>
             </div> 

@@ -1,19 +1,34 @@
 <?php
     include_once "../control/funcionarioControl.php";
+    include_once "../factory/conexao.php";
+    include_once "funcionarioModel.php";
 
-    $id = $_POST['FuncionarioId'];
-    $nome = $_POST['cxNome'];
-    $email = $_POST['cxEmail'];
-    $senha = $_POST['cxSenha'];
-    $telefone = $_POST['cxTelefone'];
-    $cargo = $_POST['cxCargo'];
-    $foto = $_FILES['cxFoto']['name'];
+    $dadosFuncionario = new Funcionario;
 
-    try{
-        $dadosProdutos = new Funcionario;
-        $dadosProdutos->updateFuncionario($id, $nome, $telefone, $email, $senha, $cargo, $foto);
-        header("Location: ../view/gerenciarFuncionario.php"); 
-    }catch(Exception $e) {
-        echo "Erro ao realizar a operação: " . $e->getMessage();
+    $dadosFuncionario->setId($_POST['FuncionarioId']);
+    $dadosFuncionario->setNome($_POST['cxNome']);
+    $dadosFuncionario->setEmail($_POST['cxEmail']);
+    $dadosFuncionario->setSenha($_POST['cxSenha']);
+    $dadosFuncionario->setTelefone($_POST['cxTelefone']);
+    $dadosFuncionario->setCargo($_POST['cxCargo']);
+
+    $foto = $_FILES["cxFoto"];
+    $nomeImagem = $dadosFuncionario->salvarImagem($foto);
+
+    if ($nomeImagem) {
+        $dadosFuncionario->setFoto($nomeImagem);
+    } else {
+        echo "<script>alert('Erro ao validar ou salvar a imagem.'); window.history.back();</script>";
+        exit;
     }
 
+    $id = $dadosFuncionario->getId();
+    $nome = $dadosFuncionario->getNome();
+    $email = $dadosFuncionario->getEmail();
+    $senha = $dadosFuncionario->getSenha();
+    $telefone = $dadosFuncionario->getTelefone();
+    $cargo = $dadosFuncionario->getCargo();
+    $foto = $dadosFuncionario->getFoto();
+
+    $dadosFuncionario->updateFuncionario($id, $nome, $telefone, $email, $senha, $cargo, $foto);
+    header("Location: ../view/gerenciarFuncionario.php");

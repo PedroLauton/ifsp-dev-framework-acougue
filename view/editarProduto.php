@@ -1,3 +1,10 @@
+<?php
+    include_once "../control/produtoControl.php";
+
+    $dadosProdutos = new Produto;
+    $id = isset($_GET['id']) ? $_GET['id'] : null;
+    $produtos = $dadosProdutos->listarPorId($id);    
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,13 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../img/logo.png">
     <link rel="stylesheet" href="../css/editarProduto.css">
-    <title>Listar produtos</title>
-    <?php
-        include_once "../control/produtoControl.php";
-        $dadosProdutos = new Produto;
-        $id = isset($_GET['id']) ? $_GET['id'] : null;
-        $produtos = $dadosProdutos->listarPorId($id);    
-    ?>
+    <title>Editar produto</title>
 </head>
 <body>
     <header class="cabecalho">
@@ -30,7 +31,7 @@
                     <button class="container__conteudo__centralizar__pesquisa__button"><img class="container__conteudo__centralizar__pesquisa__imagem" src="../img/pesquisar.png" alt="Imagem Lupa"></button>
                 </form>
             </div>
-            <form action="../model/updateProduto.php" method="POST">
+            <form action="../model/editarProduto.php" method="POST" enctype="multipart/form-data">
                 <div class="container__conteudo__auxiliar">
                     <?php if (!empty($produtos)): ?>
                         <?php foreach($produtos as $produto): ?>
@@ -58,7 +59,10 @@
                                 </div>
                                 <div class="container__conteudo__funcionarios__divisoes">
                                     <label class="container__conteudo__funcionarios__divisoes__titulo">Foto:</label>
-                                    <input type="file" name="cxFoto" id="fotoProduto" accept="image/*" required />
+                                    <div class="custom-file-input">
+                                        <label for="fotoProduto">Escolher arquivo</label>
+                                        <input type="file" name="cxFoto" id="fotoProduto" accept="image/*" required />
+                                    </div>
                                 </div>
                                 <div class="container__conteudo__funcionarios__divisoes">
                                     <div>

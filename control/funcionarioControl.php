@@ -37,6 +37,10 @@
             $this->cargo = $cargo;
         }
 
+        public function setId($id) {
+            $this->id = $id;
+        }
+
         public function setFoto($foto) {
             $this->foto = $foto;
         }
@@ -61,6 +65,10 @@
             return $this->cargo;
         }
 
+        public function getId() {
+            return $this->id;
+        }
+
         public function getFoto() {
             return $this->foto;
         }
@@ -77,12 +85,20 @@
             return $this->funcionarioModel->listarPorNome($nome);
         }
 
+        public function salvarImagem($foto) {
+            return $this->funcionarioModel->salvarImagem($foto);
+        }
+
+        public function inserirFuncionario($nome, $telefone, $email, $senha, $cargo, $foto) {
+            return $this->funcionarioModel->inserirFuncionario($nome, $telefone, $email, $senha, $cargo, $foto);
+        }
+
         public function deletarFuncionario($id) {
             return $this->funcionarioModel->deletarFuncionario($id);
         }
 
-        public function updateFuncionario($id, $nome, $telefone, $email, $senha, $cargo) {
-            return $this->funcionarioModel->updateFuncionario($id, $nome, $telefone, $email, $senha, $cargo);
+        public function updateFuncionario($id, $nome, $telefone, $email, $senha, $cargo, $foto) {
+            return $this->funcionarioModel->updateFuncionario($id, $nome, $telefone, $email, $senha, $cargo, $foto);
         }
     }
 ?>

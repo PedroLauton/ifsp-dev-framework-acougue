@@ -9,5 +9,10 @@
     <h1>Acesso Negado</h1>
     <p>Você não tem permissão para acessar esta página.</p>
     <a href="../index.php">Voltar para a página inicial</a>
+    <?php
+    include_once "../control/gerenciadorSessao.php";
+    include_once "../control/verificarSessao.php";
+
+?>
 </body>
 </html>

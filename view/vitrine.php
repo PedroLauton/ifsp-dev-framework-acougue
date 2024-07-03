@@ -31,22 +31,21 @@
             <div class="container__conteudo__promocional">
                 <img class="container__conteudo__promocional__imagem" src="../img/promocional.jpg" alt="Imagem Promocional">
             </div>
-            <h1 class="container__conteudo__titulo">Nossos Cortes!</h1>
+            <h1 class="container__conteudo__titulo">Nossos Cortes</h1>
             <p class="container__conteudo__texto">No Açougu-E, você encontra carnes suínas, bovinas, aves e frutos do mar de altíssima qualidade. Nossos cortes são selecionados com rigor para garantir frescor e sabor em cada pedaço. Seja para um churrasco, uma refeição rápida ou um prato sofisticado, temos a carne perfeita para todas as ocasiões. Visite-nos e descubra a diferença que a qualidade do Açougu-E pode fazer nas suas refeições. Siga-nos nas redes sociais e fique por dentro das nossas promoções exclusivas!</p>
+            
             <div class="container__conteudo__produtos__tema">
-                    <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
-                    <h2 class="container__conteudo__produtos__tema__titulo" >Aves</h2>
-                    <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
+                <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
+                <h2 class="container__conteudo__produtos__tema__titulo">Aves</h2>
+                <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
             </div>
-            <?php 
-                $produtos = $dadosProdutos->listarPorCategoria(1); 
-            ?>
+            <?php $produtos = $dadosProdutos->listarPorCategoria(1); ?>
             <div class="container__conteudo__produtos">
                 <?php if (!empty($produtos)): ?>
                     <?php foreach($produtos as $produto): ?>
                         <div class="container__conteudo__produtos__cartoes">
                             <h3 class="container__conteudo__produtos__cartoes__titulo"><?php echo $produto['NomeProduto']; ?></h3>
-                            <img class="container__conteudo__produtos__cartoes__imagem" src="../img/<?php echo $produto['fotoPrduto'];?>" alt="">
+                            <?php echo '<img src="../img/'.$produto['fotoProduto'].'" alt="Carne de ave" class="container__conteudo__produtos__cartoes__imagem">'; ?>
                             <span class="container__conteudo__produtos__cartoes__indicativo">Kg: <?php echo $produto['PorcaoUnidadeKg']; ?></span>
                             <span class="container__conteudo__produtos__cartoes__preco">Preço: R$ <?php echo $produto['PrecoUnitario']; ?>,00</span>
                         </div>
@@ -55,20 +54,19 @@
                     <span class="container__conteudo__produtos__semproduto"> Sem produtos nessa seção.</span>
                 <?php endif; ?>
             </div>
+            
             <div class="container__conteudo__produtos__tema">
-                    <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
-                    <h2 class="container__conteudo__produtos__tema__titulo" >Carne Bovina</h2>
-                    <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
+                <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
+                <h2 class="container__conteudo__produtos__tema__titulo">Carne Bovina</h2>
+                <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
             </div>
-            <?php 
-                $produtos = $dadosProdutos->listarPorCategoria(2); 
-            ?>
+            <?php $produtos = $dadosProdutos->listarPorCategoria(2); ?>
             <div class="container__conteudo__produtos">
                 <?php if (!empty($produtos)): ?>
                     <?php foreach($produtos as $produto): ?>
                         <div class="container__conteudo__produtos__cartoes">
                             <h3 class="container__conteudo__produtos__cartoes__titulo"><?php echo $produto['NomeProduto']; ?></h3>
-                            <img class="container__conteudo__produtos__cartoes__imagem" src="../img/logo.png" alt="">
+                            <?php echo '<img src="../img/'.$produto['fotoProduto'].'" alt="Carne bovina" class="container__conteudo__produtos__cartoes__imagem">'; ?>
                             <span class="container__conteudo__produtos__cartoes__indicativo">Kg: <?php echo $produto['PorcaoUnidadeKg']; ?></span>
                             <span class="container__conteudo__produtos__cartoes__preco">Preço: R$ <?php echo $produto['PrecoUnitario']; ?>,00</span>
                         </div>
@@ -77,20 +75,19 @@
                     <span class="container__conteudo__produtos__semproduto"> Sem produtos nessa seção.</span>
                 <?php endif; ?>
             </div>
+            
             <div class="container__conteudo__produtos__tema">
-                    <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
-                    <h2 class="container__conteudo__produtos__tema__titulo" >Carne Suína</h2>
-                    <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
+                <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
+                <h2 class="container__conteudo__produtos__tema__titulo">Carne Suína</h2>
+                <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
             </div>
-            <?php 
-                $produtos = $dadosProdutos->listarPorCategoria(3); 
-            ?>
+            <?php $produtos = $dadosProdutos->listarPorCategoria(3); ?>
             <div class="container__conteudo__produtos">
                 <?php if (!empty($produtos)): ?>
                     <?php foreach($produtos as $produto): ?>
                         <div class="container__conteudo__produtos__cartoes">
                             <h3 class="container__conteudo__produtos__cartoes__titulo"><?php echo $produto['NomeProduto']; ?></h3>
-                            <img class="container__conteudo__produtos__cartoes__imagem" src="../img/logo.png" alt="">
+                            <?php echo '<img src="../img/'.$produto['fotoProduto'].'" alt="Carne suína" class="container__conteudo__produtos__cartoes__imagem">'; ?>
                             <span class="container__conteudo__produtos__cartoes__indicativo">Kg: <?php echo $produto['PorcaoUnidadeKg']; ?></span>
                             <span class="container__conteudo__produtos__cartoes__preco">Preço: R$ <?php echo $produto['PrecoUnitario']; ?>,00</span>
                         </div>
@@ -99,20 +96,19 @@
                     <span class="container__conteudo__produtos__semproduto"> Sem produtos nessa seção.</span>
                 <?php endif; ?>
             </div>
+            
             <div class="container__conteudo__produtos__tema">
-                    <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
-                    <h2 class="container__conteudo__produtos__tema__titulo" >Frutos do mar</h2>
-                    <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
+                <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
+                <h2 class="container__conteudo__produtos__tema__titulo">Frutos do Mar</h2>
+                <img class="container__conteudo__produtos__tema__traco" src="../img/traco.png" alt="Tracejado">
             </div>
-            <?php 
-                $produtos = $dadosProdutos->listarPorCategoria(4); 
-            ?>
+            <?php $produtos = $dadosProdutos->listarPorCategoria(4); ?>
             <div class="container__conteudo__produtos">
                 <?php if (!empty($produtos)): ?>
                     <?php foreach($produtos as $produto): ?>
                         <div class="container__conteudo__produtos__cartoes">
                             <h3 class="container__conteudo__produtos__cartoes__titulo"><?php echo $produto['NomeProduto']; ?></h3>
-                            <img class="container__conteudo__produtos__cartoes__imagem" src="../img/logo.png" alt="">
+                            <?php echo '<img src="../img/'.$produto['fotoProduto'].'" alt="Frutos do mar" class="container__conteudo__produtos__cartoes__imagem">'; ?>
                             <span class="container__conteudo__produtos__cartoes__indicativo">Kg: <?php echo $produto['PorcaoUnidadeKg']; ?></span>
                             <span class="container__conteudo__produtos__cartoes__preco">Preço: R$ <?php echo $produto['PrecoUnitario']; ?>,00</span>
                         </div>
@@ -122,9 +118,10 @@
                 <?php endif; ?>
             </div>
         </section>
+        
         <section class="container__fornecedores">
             <div class="container__fornecedores__centralizar">
-                <h2 class="container__fornecedores__titulo">Nossos fornecedores!</h2>
+                <h2 class="container__fornecedores__titulo">Nossos fornecedores</h2>
                 <img class="container__fornecedores__centralizar__imagem" src="../img/Fazuele.png" alt="Fornecedor Fazuele">
                 <img class="container__fornecedores__centralizar__imagem" src="../img/FOGONOBOI.png" alt="Fornecedor FOGONOBOI">
             </div>

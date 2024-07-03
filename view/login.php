@@ -1,12 +1,6 @@
 <?php
-include_once "../control/gerenciadorSessao.php";
-include_once "../control/verificarSessao.php";
-
-GerenciadorSessao::iniciarSessao(); // Inicia a sessão usando a classe GerenciadorSessao
-verificarSessao::redirecionarUsuarioAutenticado(); // Redireciona o usuário autenticado para a página correspondente ao seu tipo de usuário
-
-//acima temos a inclusão dos arquivos gerenciadorSessao.php e verificarSessao.php, que são responsáveis por iniciar a sessão e verificar se o usuário autenticado tem permissão para acessar determinada página, respectivamente. Caso o usuário autenticado já esteja logado, ele é redirecionado para a página correspondente ao seu tipo de usuário. Isso ocorre quando o usaurio esta na pagina vitrine.php e clica no botão de login, ele é redirecionado para a pagina de login.php, e se ele ja estiver logado, ele é redirecionado para a pagina correspondente ao seu tipo de usuario, seja ele administrador ou funcionario.
-
+    include_once "../control/gerenciadorSessao.php";
+    include_once "../control/verificarSessao.php";
 
     
 ?>

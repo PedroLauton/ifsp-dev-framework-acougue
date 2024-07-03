@@ -1,3 +1,10 @@
+<?php
+    include_once "../control/funcionarioControl.php";
+
+    $dadosFuncionario = new Funcionario;
+    $nome = isset($_POST['cxNomeFunc']) ? $_POST['cxNomeFunc'] : null;
+    $funcionarios = $dadosFuncionario->listarPorNome($nome);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,12 +13,6 @@
     <link rel="icon" href="../img/logo.png">
     <link rel="stylesheet" href="../css/listarFuncionarioNome.css">
     <title>Pesquisar funcionários</title>
-    <?php
-        include_once "../control/funcionarioControl.php";
-        $dadosFuncionario = new Funcionario;
-        $nome = isset($_POST['cxNomeFunc']) ? $_POST['cxNomeFunc'] : null;
-        $funcionarios = $dadosFuncionario->listarPorNome($nome);
-    ?>
 </head>
 <body>
     <header class="cabecalho">
@@ -56,7 +57,7 @@
                             </div>
                             <div class="container__conteudo__funcionarios__divisoes">
                                 <label class="container__conteudo__funcionarios__divisoes__titulo">Foto:</label>
-                                <img src="<?php echo ($produto['Foto']); ?>" alt="Foto do Produto" />
+                                <?php echo '<img src="../img/'.$funcionario['Foto'].'" alt="Foto do Produto" class="container__conteudo__funcionarios__divisoes__titulo__foto"><br>'?>
                             </div>
                             <div class="container__conteudo__funcionarios__divisoes">
                                 <div>

@@ -1,3 +1,10 @@
+<?php
+        include_once "../control/produtoControl.php";
+
+        $dadosProdutos = new Produto;
+        $id = isset($_GET['id']) ? $_GET['id'] : null;
+        $produtos = $dadosProdutos->listarPorId($id);    
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,13 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../img/logo.png">
     <link rel="stylesheet" href="../css/deletarProduto.css">
-    <title>Listar produtos</title>
-    <?php
-        include_once "../control/produtoControl.php";
-        $dadosProdutos = new Produto;
-        $id = isset($_GET['id']) ? $_GET['id'] : null;
-        $produtos = $dadosProdutos->listarPorId($id);    
-    ?>
+    <title>Excluir produto</title>
 </head>
 <body>
     <header class="cabecalho">
@@ -30,7 +31,7 @@
                     <button class="container__conteudo__centralizar__pesquisa__button"><img class="container__conteudo__centralizar__pesquisa__imagem" src="../img/pesquisar.png" alt="Imagem Lupa"></button>
                 </form>
             </div>
-            <form action="../model/deletarProdutoModel.php" method="POST">
+            <form action="../model/deletarProduto.php" method="POST">
                 <div class="container__conteudo__auxiliar">
                     <?php if (!empty($produtos)): ?>
                         <?php foreach($produtos as $produto): ?>
@@ -58,8 +59,8 @@
                                 </div>
                                 <div class="container__conteudo__funcionarios__divisoes">
                                     <label class="container__conteudo__funcionarios__divisoes__titulo">Foto:</label>
-                                    <img src="" alt="Foto do produto">
-                                </div>
+                                    <?php echo '<img src="../img/'.$produto['fotoProduto'].'" alt="Foto do Produto" class="container__conteudo__produtos__divisoes__titulo__foto"><br>'?>
+                                    </div>
                                 <div class="container__conteudo__funcionarios__divisoes">
                                     <div>
                                     <button class="container__conteudo__funcionarios__divisoes__button">Excluir</button>

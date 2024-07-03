@@ -1,3 +1,10 @@
+<?php
+    include_once "../control/funcionarioControl.php";
+
+    $dadosFuncionario = new Funcionario;
+    $id = isset($_GET['id']) ? $_GET['id'] : null;
+    $funcionarios = $dadosFuncionario->listarPorId($id);    
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,12 +13,6 @@
     <link rel="icon" href="../img/logo.png">
     <link rel="stylesheet" href="../css/editarFuncionario.css">
     <title>Editar funcionário</title>
-    <?php
-        include_once "../control/funcionarioControl.php";
-        $dadosFuncionario = new Funcionario;
-        $id = isset($_GET['id']) ? $_GET['id'] : null;
-        $funcionarios = $dadosFuncionario->listarPorId($id);    
-    ?>
 </head>
 <body>
     <header class="cabecalho">
@@ -25,12 +26,12 @@
             <h1 class="container__conteudo__titulo">Edição de funcionário</h1>
             <div class="container__conteudo__centralizar">
                 <form class="container__conteudo__centralizar__pesquisa" action="listarFuncionarioNome.php" method="POST">
-                    <a class="container__conteudo__centralizar__cadastro" href="cadastrarProduto.php">Cadastrar</a>
+                    <a class="container__conteudo__centralizar__cadastro" href="cadastrarFuncionario.php">Cadastrar</a>
                     <input class="container__conteudo__centralizar__pesquisa__input" type="text" name="cxNomeFunc" placeholder="Buscar">
                     <button class="container__conteudo__centralizar__pesquisa__button"><img class="container__conteudo__centralizar__pesquisa__imagem" src="../img/pesquisar.png" alt="Imagem Lupa"></button>
                 </form>
             </div>
-            <form action="../model/editarFuncionario.php" method="POST">
+            <form action="../model/editarFuncionario.php" method="POST" enctype="multipart/form-data">
                 <div class="container__conteudo__auxiliar">
                     <?php if (!empty($funcionarios)): ?>
                         <?php foreach($funcionarios as $funcionario): ?>

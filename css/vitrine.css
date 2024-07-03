@@ -127,6 +127,9 @@
     color: var(--cor-preto);
     padding: 0 0 1rem 0;
 }
+.container__conteudo__produtos__cartoes__imagem{
+    width: 6rem;
+}
 .container__conteudo__produtos__cartoes__preco{
     font-family: "Chau Philomene One", sans-serif;
     color: var(--cor-preto);

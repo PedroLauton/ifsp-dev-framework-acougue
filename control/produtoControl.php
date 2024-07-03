@@ -40,6 +40,10 @@
             $this->foto = $foto;
         }
 
+        public function setId($id){
+            $this->id = $id;
+        }
+
        public function getNomeProduto(){
             return $this->nomeProduto;
         }
@@ -64,6 +68,10 @@
             return $this->foto;
         }
 
+        public function getId(){
+            return $this->id;
+        }
+
         public function listarTodos(){
             return $this->produtoModel->listarTodos();
         }
@@ -82,6 +90,14 @@
 
         public function deletarProduto($id){
             return $this->produtoModel->deletarProduto($id);
+        }
+
+        public function inserirProduto($nome, $preco, $porcao, $categoria, $fornecedor, $foto){
+            return $this->produtoModel->inserirProduto($nome, $preco, $porcao, $categoria, $fornecedor, $foto);
+        }
+
+        public function salvarImagem($foto){
+            return $this->produtoModel->salvarImagem($foto);
         }
 
         public function updateProduto($id, $nome, $preco, $porcao, $categoria, $fornecedor, $foto){

@@ -5,6 +5,7 @@
 
     $dadosProduto = new Produto;
 
+    $dadosProduto->setId($_POST['ProdutoId']);
     $dadosProduto->setNomeProduto($_POST['cxNome']);
     $dadosProduto->setPrecoUnitario($_POST['cxPreco']);
     $dadosProduto->setPorcaoUnidade($_POST['cxPorcao']);
@@ -21,6 +22,7 @@
         exit;
     }
 
+    $id = $dadosProduto->getId();
     $nome = $dadosProduto->getNomeProduto();
     $preco = $dadosProduto->getPrecoUnitario();
     $porcao = $dadosProduto->getPorcaoUnidade();
@@ -28,6 +30,6 @@
     $fornecedor = $dadosProduto->getFornecedor();
     $foto = $dadosProduto->getFoto();
 
-    $dadosProduto->inserirProduto($nome, $preco, $porcao, $categoria, $fornecedor, $foto);
+    $dadosProduto->updateProduto($id, $nome, $preco, $porcao, $categoria, $fornecedor, $foto);
     header("Location: ../view/gerenciarProduto.php");
 ?>

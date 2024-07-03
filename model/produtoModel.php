@@ -17,12 +17,7 @@
             $inserir->bindParam(':categoria',$categoria,PDO::PARAM_STR);
             $inserir->bindParam(':fornecedor',$fornecedor,PDO::PARAM_STR);
             $inserir->bindParam(':foto',$foto,PDO::PARAM_STR);
-            try{
-                $inserir->execute();
-            }catch(PDOException $e){
-                echo "Erro.". $e->getMessage();
-                return false;
-            }
+            $inserir->execute();
        }
 
        public function listarTodos(){
@@ -64,18 +59,48 @@
        }
 
        public function updateProduto($id, $nome, $preco, $porcao, $categoria, $fornecedor, $foto){
-        $query = "UPDATE estoque SET NomeProduto=:nome, PrecoUnitario=:preco, PorcaoUnidadeKg=:porcao, CategoriaId=:categoria, FornecedorId=:fornecedor, fotoProduto=:foto WHERE ProdutoId=:id";
-        $update = $this->conn->prepare($query);
-        $update = $this->conn->prepare($query);
-        $update = $this->conn->prepare($query);
-        $update->bindParam(':id', $id, PDO::PARAM_INT);
-        $update->bindParam(':nome', $nome, PDO::PARAM_STR);
-        $update->bindParam(':preco', $preco, PDO::PARAM_STR);
-        $update->bindParam(':porcao', $porcao, PDO::PARAM_STR);
-        $update->bindParam(':categoria', $categoria, PDO::PARAM_INT);
-        $update->bindParam(':fornecedor', $fornecedor, PDO::PARAM_INT);
-        $update->bindParam(':foto', $foto, PDO::PARAM_STR);
-        $update->execute();
-    }
+            $query = "UPDATE estoque SET NomeProduto=:nome, PrecoUnitario=:preco, PorcaoUnidadeKg=:porcao, CategoriaId=:categoria, FornecedorId=:fornecedor, fotoProduto=:foto WHERE ProdutoId=:id";
+            $update = $this->conn->prepare($query);
+            $update = $this->conn->prepare($query);
+            $update = $this->conn->prepare($query);
+            $update->bindParam(':id', $id, PDO::PARAM_INT);
+            $update->bindParam(':nome', $nome, PDO::PARAM_STR);
+            $update->bindParam(':preco', $preco, PDO::PARAM_STR);
+            $update->bindParam(':porcao', $porcao, PDO::PARAM_STR);
+            $update->bindParam(':categoria', $categoria, PDO::PARAM_INT);
+            $update->bindParam(':fornecedor', $fornecedor, PDO::PARAM_INT);
+            $update->bindParam(':foto', $foto, PDO::PARAM_STR);
+            $update->execute();
+        }
+
+        public function validarImagem($foto) {
+            if (isset($foto) && $foto['error'] == 0) {
+                $extensao = strtolower(pathinfo($foto['name'], PATHINFO_EXTENSION));
+                $tiposPermitidos = array('jpg', 'jpeg', 'png', 'gif');
     
+                if (in_array($extensao, $tiposPermitidos)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+    
+        public function salvarImagem($foto) {
+            if ($this->validarImagem($foto)) {
+                $extensao = strtolower(pathinfo($foto['name'], PATHINFO_EXTENSION));
+                $nomeImagem = uniqid() . '.' . $extensao;
+                $caminhoImagem = "../img/" . $nomeImagem;
+    
+                if (move_uploaded_file($foto['tmp_name'], $caminhoImagem)) {
+                    return $nomeImagem;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
     }

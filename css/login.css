@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Chau+Philomene+One:ital@0;1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap'); /* Adicionado para a fonte PT Sans */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap'); 
 
 :root {
     --cor-vinho: #400000;
@@ -60,7 +60,7 @@ main {
     font-family: var(--fonte2);
 }
 .cabecalho__navegacao__Marca__Estilo {
-    font-size: 2rem;
+    font-size: 3rem;
     font-family: var(--fonte2);
     color: var(--cor-laranja);
 }
@@ -81,7 +81,7 @@ main {
     justify-content: center;
 }
 .container__titulo {
-    font-family: var(--fonte5);
+    font-family: "Bebas Neue", sans-serif;;
     font-size: 2rem;
     color: var(--cor-preto);
     padding: 0 0 1rem 0;

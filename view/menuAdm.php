@@ -1,11 +1,9 @@
 <?php
-include_once "../control/gerenciadorSessao.php";
-include_once "../control/verificarSessao.php";
+    include_once "../control/gerenciadorSessao.php";
+    include_once "../control/verificarSessao.php";
 
-GerenciadorSessao::iniciarSessao(); // Inicia a sessão usando a classe GerenciadorSessao
-VerificarSessao::verificarAcesso(VerificarSessao::ADMINISTRADORES); // Verifica se o usuário é um administrador
+    
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -32,7 +30,7 @@ VerificarSessao::verificarAcesso(VerificarSessao::ADMINISTRADORES); // Verifica 
     </main>
     <footer class="footer">
         <div class="footer__centralizar">
-            <span class="footer__centralizar__conteudo">+55 11 99999-9999 </span>
+            <span class="footer__centralizar__conteudo">+55 11 99999-9999</span>
             <span class="footer__centralizar__conteudo">açougue@gmail.com</span>
             <span class="footer__centralizar__conteudo">©2024 Açougu-e. Todos os direitos reservados.</span>
         </div>
