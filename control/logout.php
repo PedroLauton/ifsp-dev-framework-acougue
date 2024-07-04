@@ -4,5 +4,5 @@
     GerenciadorSessao::iniciarSessao();
     GerenciadorSessao::destruirSessao();
 
-    header("Location: ../view/login.php");
+    header("Location: ../view/vitrine.php");
 ?>

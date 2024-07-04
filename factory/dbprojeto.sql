@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04/07/2024 às 01:55
+-- Tempo de geração: 04/07/2024 às 02:24
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -87,23 +87,19 @@ INSERT INTO `estoque` (`ProdutoId`, `NomeProduto`, `PorcaoUnidadeKg`, `PrecoUnit
 (90, 'Peito de frango', 1, 34, 1, 1, '6685e27a4fa21.png'),
 (93, 'Pé de frango', 1, 34, 1, 1, '6685d945e01ef.png'),
 (94, 'Coração de frango', 1, 36, 1, 1, '6685d96900db1.png'),
-(95, 'Asas de frango', 1, 54, 1, 1, '6685d98742bbd.png'),
 (96, 'Contra filé', 1, 45, 2, 2, '6685d9f26035f.png'),
-(97, 'Costela', 1, 34, 2, 2, '6685da11a0051.png'),
 (98, 'Patinho', 1, 76, 2, 2, '6685da3763fad.png'),
 (99, 'Maminha', 1, 23, 2, 2, '6685da55b60ff.png'),
 (101, 'Linguiça', 1, 23, 3, 1, '6685da96f310c.png'),
 (102, 'Lombo', 1, 45, 3, 1, '6685dab906d44.png'),
-(103, 'Costelinha', 1, 45, 3, 1, '6685dad58baae.png'),
 (104, 'Pernil', 1, 67, 3, 1, '6685daed9d35c.png'),
 (105, 'Bisteca', 1, 55, 3, 1, '6685db0364e0e.png'),
 (106, 'Caranguejo', 1, 87, 4, 2, '6685db2186d60.png'),
-(107, 'Camarão', 1, 76, 4, 2, '6685db3889c1d.png'),
 (108, 'Lula', 1, 999, 4, 2, '6685db531518e.png'),
 (109, 'Tilápia', 1, 54, 4, 2, '6685db6de6fb1.png'),
 (110, 'Ostras', 1, 78, 4, 2, '6685db8543875.png'),
 (111, 'Picanha', 1, 999, 2, 2, '6685dc94bd254.png'),
-(112, 'Coxa de frango', 1, 34, 1, 1, '6685e1f2bbf91.png');
+(112, 'Coxa de frango', 1, 34, 1, 1, '6685eb9918f5b.png');
 
 -- --------------------------------------------------------
 
