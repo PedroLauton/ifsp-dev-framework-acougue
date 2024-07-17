@@ -1,4 +1,4 @@
-# Projeto AÇOUGU-E (reimaginado)
+# Projeto AÇOUGU-E (reformulado)
 
 Este projeto tem como objetivo explorar a orientação a objetos em PHP. Consiste em uma vitrine de um açougue que é gerenciado por administradores e funcionários.
 
